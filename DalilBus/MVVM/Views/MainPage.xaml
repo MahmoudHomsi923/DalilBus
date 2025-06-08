@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+            xmlns:vm="clr-namespace:DalilBus.MVVM.ViewModels"  
+            x:Class="DalilBus.MainPage">  
+
+   <ContentPage.BindingContext>  
+       <vm:MainPageViewModel />  
+   </ContentPage.BindingContext>  
+
+   <ContentPage.Resources>  
+       <x:String x:Key="exchange">&#xf0ec;</x:String>  
+       <x:String x:Key="search">&#xf002;</x:String>  
+   </ContentPage.Resources>  
+
+   <ScrollView>  
+       <VerticalStackLayout  
+           Padding="0"  
+           Spacing="0">  
+           <Image  
+               Source="startfoto.png"  
+               HeightRequest="185"  
+               HorizontalOptions="Fill"  
+               Aspect="Fill"  
+               SemanticProperties.Description="dot net bot in a race car number eight" />  
+
+           <VerticalStackLayout  
+           Padding="25.0"  
+           Spacing="25">  
+
+               <Grid Margin="0,1,0,0" RowDefinitions=".08*,.1*,.5*,.1*,.3*">  
+                   <Label Text="From من"  
+                           HorizontalOptions="End"  
+                           TextColor="Gray"/>  
+                   <Border Grid.Row="1" Padding="10.0" Stroke="Gray" StrokeThickness="1">  
+                       <Border.StrokeShape>  
+                           <RoundRectangle CornerRadius="3" />  
+                       </Border.StrokeShape>  
+                       <Picker x:Name="pickerFrom"  
+                               Title="Select اختيار"  
+                               FlowDirection="RightToLeft"  
+                               ItemsSource="{Binding Places}"  
+                               SelectedItem="{Binding SelectedStartPlace}" 
+                               ItemDisplayBinding="{Binding Name}"
+                               HeightRequest="400"  
+                               HorizontalOptions="Fill"  
+                               TitleColor="Gray" />  
+                   </Border>  
+               </Grid>  
+
+               <Grid Margin="15,-20,15,-20" RowDefinitions="Auto,Auto,Auto">  
+                   <Frame HeightRequest="50" WidthRequest="50" CornerRadius="25" BackgroundColor="Gold" BorderColor="Transparent" HasShadow="False" Padding="0">
+                        <ImageButton x:Name="btnExchange" BackgroundColor="Transparent" Padding="10" Clicked="OnBtnExchangeClicked">  
+                           <ImageButton.Source>  
+                               <FontImageSource Glyph="{StaticResource exchange}"  
+                                                FontFamily="FAS"  
+                                                Size="30"  
+                                                Color="White"/> 
+                            </ImageButton.Source>  
+                       </ImageButton>  
+                   </Frame>  
+               </Grid>  
+
+               <Grid Margin="0,-20,0,1" RowDefinitions=".08*,.1*,.5*,.1*,.3*">  
+                   <Label Text="To إلى"  
+                           HorizontalOptions="End"  
+                           TextColor="Gray"/>  
+                   <Border Grid.Row="1" Padding="10" Stroke="Gray" StrokeThickness="1">  
+                       <Border.StrokeShape>  
+                           <RoundRectangle CornerRadius="3" />  
+                       </Border.StrokeShape>  
+                       <Picker x:Name="pickerTo"  
+                       Title="Select اختيار"  
+                       FlowDirection="RightToLeft"  
+                       ItemsSource="{Binding Places}"  
+                       SelectedItem="{Binding SelectedDestinationPlace}"
+                       ItemDisplayBinding="{Binding Name}" 
+                       HeightRequest="400"  
+                       HorizontalOptions="Fill"  
+                       TitleColor="Gray" />  
+                   </Border>  
+               </Grid>  
+
+               <Grid Margin="0,1,0,1" RowDefinitions=".08*,.1*,.5*,.1*,.3*">  
+                   <Label Text="Date التاريخ"  
+                          HorizontalOptions="End"  
+                          TextColor="Gray"/>  
+                   <Border Grid.Row="1" Padding="10" Stroke="Gray" StrokeThickness="1">  
+                       <Border.StrokeShape>  
+                           <RoundRectangle CornerRadius="3" />  
+                       </Border.StrokeShape>  
+                       <DatePicker x:Name="datePicker"  
+                                   Format="dd/MM/yyyy"  
+                                   FlowDirection="RightToLeft"  
+                                   Date="{Binding SelectedDate}"  
+                                   HeightRequest="400"  
+                                   HorizontalOptions="Fill"/>  
+                   </Border>  
+               </Grid>  
+
+               <Grid Margin="0,1,0,1" RowDefinitions=".08*,.1*,.5*,.1*,.3*">  
+                   <Label Text="Time الوقت"  
+                          HorizontalOptions="End"  
+                           TextColor="Gray"/>  
+                   <Border Grid.Row="1" Padding="10" Stroke="Gray" StrokeThickness="1">  
+                       <Border.StrokeShape>  
+                           <RoundRectangle CornerRadius="3" />  
+                       </Border.StrokeShape>  
+                       <TimePicker x:Name="timePicker"  
+                                   FlowDirection="RightToLeft"  
+                                   Time="{Binding SelectedTime}"  
+                                   HeightRequest="400"  
+                                   HorizontalOptions="End"/>  
+                   </Border>  
+               </Grid>  
+
+               <Grid Margin="0,20,0,10">  
+                   <Button Text="Search بحث"  
+                           FontAttributes="Bold"  
+                           FontSize="24"  
+                           HorizontalOptions="Fill"  
+                           BackgroundColor="Gold"  
+                           CornerRadius="3"  
+                           Margin="0"   
+                           ContentLayout="Left, 10"
+                           IsEnabled="{Binding CanSearch}"
+                           Clicked="OnBtnSearchClicked">
+                        <Button.ImageSource>
+                            <FontImageSource Glyph="{StaticResource search}" FontFamily="FAS" Color="White"/>
+                        </Button.ImageSource>
+                    </Button>  
+               </Grid>  
+
+           </VerticalStackLayout>  
+       </VerticalStackLayout>  
+   </ScrollView>  
+
+</ContentPage>

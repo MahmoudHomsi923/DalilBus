@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="DalilBus.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:DalilBus"
+    xmlns:views="clr-namespace:DalilBus.MVVM.Views"
+    FlowDirection="RightToLeft"
+    Shell.BackgroundColor="#FFD700"
+    Shell.TabBarBackgroundColor="#FFD700"
+    Shell.TabBarForegroundColor="#333333"
+    Shell.TabBarTitleColor="#333333"
+    Shell.TabBarUnselectedColor="#B8860B">
+
+    <Shell.TitleView>
+        <Grid Padding="10,0,10,0">
+            <Label x:Name="TitleLabel"
+               HorizontalOptions="End"
+               VerticalOptions="Center"
+               TextColor="#333333"
+               FontSize="20"/>
+        </Grid>
+    </Shell.TitleView>
+
+    <TabBar>
+        
+
+        <ShellContent
+            x:Name="moreTab"
+            Title="More المزيد"
+            Icon="info.svg"
+            ContentTemplate="{DataTemplate views:AboutPage}" />
+
+        <ShellContent
+            x:Name="searchTab"
+            Title="Search بحث"
+            Icon="search.svg"
+            ContentTemplate="{DataTemplate local:MainPage}" />
+
+
+    </TabBar>
+
+</Shell>

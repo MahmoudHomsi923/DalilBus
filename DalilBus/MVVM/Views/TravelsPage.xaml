@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DalilBus.MVVM.Views.TravelsPage"
+             Title="Travels الرحلات">
+    <VerticalStackLayout>
+
+        <Label 
+            x:Name="lblPlaces"
+            Text="Point"
+            VerticalOptions="Center" 
+            HorizontalOptions="Fill"
+            HorizontalTextAlignment="Center"
+            BackgroundColor="{StaticResource Primary}"
+            FontSize="16" />
+
+        <Label 
+            x:Name="lblDateTime"
+            Text="date and Time"
+            VerticalOptions="Center" 
+            HorizontalOptions="Fill"
+            HorizontalTextAlignment="Center"
+            BackgroundColor="{StaticResource Primary}"
+            FontSize="16" />
+        
+    </VerticalStackLayout>
+</ContentPage>

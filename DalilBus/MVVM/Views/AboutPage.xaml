@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DalilBus.MVVM.Views.AboutPage"
+             Title="المزيد More">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Label Text="DalilBuses"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <!-- Arabic section -->
+            <Label Text="يقدّم تطبيق دليل الباصات معلومات عن خطوط الباصات وأوقاتها بين المدن السورية."
+                   FontSize="16"
+                   HorizontalTextAlignment="Center"
+                   FlowDirection="RightToLeft" />
+
+            <Label Text="يحتاج التطبيق إلى الاتصال بالإنترنت للحصول على أحدث المعلومات."
+                   FontSize="16"
+                   HorizontalTextAlignment="Center"
+                   FlowDirection="RightToLeft" />
+
+            <Label Text="للتواصل: dalilbuses@app.com"
+                   FontSize="16"
+                   HorizontalTextAlignment="Center"
+                   FlowDirection="RightToLeft" />
+
+            <!-- English section -->
+            <Label Text="DalilBuses provides information about bus routes and schedules between Syrian cities."
+                   FontSize="16"
+                   HorizontalTextAlignment="Center" />
+
+            <Label Text="The app requires an internet connection to provide the latest data."
+                   FontSize="16"
+                   HorizontalTextAlignment="Center" />
+
+            <Label Text="Contact: dalilbuses@app.com"
+                   FontSize="16"
+                   HorizontalTextAlignment="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
