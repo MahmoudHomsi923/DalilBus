@@ -6,8 +6,16 @@
     <VerticalStackLayout>
 
         <Label 
-            x:Name="lblPlaces"
-            Text="Point"
+            x:Name="lblPointFrom"
+            Text="PointFrom"
+            VerticalOptions="Center" 
+            HorizontalOptions="Fill"
+            HorizontalTextAlignment="Center"
+            BackgroundColor="{StaticResource Primary}"
+            FontSize="16" />
+        <Label 
+            x:Name="lblPointTo"
+            Text="PointTo"
             VerticalOptions="Center" 
             HorizontalOptions="Fill"
             HorizontalTextAlignment="Center"

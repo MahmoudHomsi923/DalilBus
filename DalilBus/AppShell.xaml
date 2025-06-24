@@ -6,11 +6,11 @@
     xmlns:local="clr-namespace:DalilBus"
     xmlns:views="clr-namespace:DalilBus.MVVM.Views"
     FlowDirection="RightToLeft"
-    Shell.BackgroundColor="#FFD700"
-    Shell.TabBarBackgroundColor="#FFD700"
-    Shell.TabBarForegroundColor="#333333"
-    Shell.TabBarTitleColor="#333333"
-    Shell.TabBarUnselectedColor="#B8860B">
+    Shell.TabBarForegroundColor="Gold"
+    Shell.TabBarTitleColor="Gold"
+    Shell.BackgroundColor="#FFD700">
+    <!--Shell.TabBarUnselectedColor="Gray"
+    Shell.TabBarBackgroundColor="#FFD700"-->
 
     <Shell.TitleView>
         <Grid Padding="10,0,10,0">
