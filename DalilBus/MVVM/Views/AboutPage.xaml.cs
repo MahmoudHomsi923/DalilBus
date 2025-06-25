@@ -6,6 +6,6 @@ public partial class AboutPage : ContentPage
 	{
 		InitializeComponent();
         // Set the title here
-        Title = "More المزيد"; 
+        Title = "More المزيد";
     }
 }

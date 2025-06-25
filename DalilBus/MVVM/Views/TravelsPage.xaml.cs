@@ -65,9 +65,8 @@ public partial class TravelsPage : ContentPage
         base.OnAppearing();
 
         // Zeige die Werte auf der Seite an (z. B. in Labels)
-        lblPointFrom.Text = StartPlace + " :From من";
-        lblPointTo.Text = DestinationPlace + " :To إلى";
-        lblDateTime.Text = SelectedTime + "، " + SelectedDate + " :Departure time موعد الانطلاق";
-        
+        lblPlaces.Text = $"{DestinationPlace}   ⬅️   {StartPlace}";
+        lblDateTime.Text = $"{SelectedDate}  •  {SelectedTime}";
+
     }
 }

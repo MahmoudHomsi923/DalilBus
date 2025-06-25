@@ -6,18 +6,11 @@
     <VerticalStackLayout>
 
         <Label 
-            x:Name="lblPointFrom"
+            x:Name="lblPlaces"
             Text="PointFrom"
             VerticalOptions="Center" 
             HorizontalOptions="Fill"
-            HorizontalTextAlignment="Center"
-            BackgroundColor="{StaticResource Primary}"
-            FontSize="16" />
-        <Label 
-            x:Name="lblPointTo"
-            Text="PointTo"
-            VerticalOptions="Center" 
-            HorizontalOptions="Fill"
+            FlowDirection="RightToLeft"
             HorizontalTextAlignment="Center"
             BackgroundColor="{StaticResource Primary}"
             FontSize="16" />
@@ -27,6 +20,7 @@
             Text="date and Time"
             VerticalOptions="Center" 
             HorizontalOptions="Fill"
+            FlowDirection="RightToLeft"
             HorizontalTextAlignment="Center"
             BackgroundColor="{StaticResource Primary}"
             FontSize="16" />

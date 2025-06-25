@@ -5,11 +5,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:DalilBus"
     xmlns:views="clr-namespace:DalilBus.MVVM.Views"
-    FlowDirection="RightToLeft"
-    Shell.TabBarForegroundColor="Gold"
-    Shell.TabBarTitleColor="Gold"
+    Shell.TabBarForegroundColor="#FFD700"
+    Shell.TabBarTitleColor="#FFD700"
     Shell.BackgroundColor="#FFD700">
-    <!--Shell.TabBarUnselectedColor="Gray"
+    <!--FlowDirection="RightToLeft"
+    Shell.TabBarUnselectedColor="Gray"
     Shell.TabBarBackgroundColor="#FFD700"-->
 
     <Shell.TitleView>
@@ -23,7 +23,6 @@
     </Shell.TitleView>
 
     <TabBar>
-        
 
         <ShellContent
             x:Name="moreTab"
