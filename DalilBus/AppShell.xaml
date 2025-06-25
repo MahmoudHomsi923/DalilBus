@@ -8,16 +8,12 @@
     Shell.TabBarForegroundColor="#FFD700"
     Shell.TabBarTitleColor="#FFD700"
     Shell.BackgroundColor="#FFD700">
-    <!--FlowDirection="RightToLeft"
-    Shell.TabBarUnselectedColor="Gray"
-    Shell.TabBarBackgroundColor="#FFD700"-->
 
     <Shell.TitleView>
         <Grid Padding="10,0,10,0">
             <Label x:Name="TitleLabel"
                HorizontalOptions="End"
                VerticalOptions="Center"
-               TextColor="#333333"
                FontSize="20"/>
         </Grid>
     </Shell.TitleView>

@@ -122,6 +122,7 @@
                     <Button Text="Search بحث"  
                            FontAttributes="Bold"  
                            FontSize="24"  
+                           TextColor="White"
                            HorizontalOptions="Fill"  
                            BackgroundColor="Gold"  
                            CornerRadius="3"  

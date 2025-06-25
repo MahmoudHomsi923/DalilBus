@@ -10,8 +10,8 @@
     <Color x:Key="PrimaryDark">#FFD700</Color>
     <!-- Eine dunklere Variante von #FFD700 -->
     <Color x:Key="PrimaryDarkText">#242424</Color>
-    <Color x:Key="Secondary">#FFD700</Color>
-    <Color x:Key="SecondaryDarkText">#FFD700</Color>
+    <Color x:Key="Secondary">white</Color>
+    <Color x:Key="SecondaryDarkText">white</Color>
     <Color x:Key="Tertiary">#FFD700</Color>
     <!-- Helleres Gold für deaktiviert -->
     <Color x:Key="PrimaryDisabled">#FFE57F</Color>
