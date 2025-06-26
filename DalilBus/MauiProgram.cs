@@ -17,9 +17,8 @@ public static class MauiProgram
                 fonts.AddFont("Free-Regular-400.otf", "FAR");
                 fonts.AddFont("Free-Solid-900.otf", "FAS");
             });
-
 #if DEBUG
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
 		return builder.Build();

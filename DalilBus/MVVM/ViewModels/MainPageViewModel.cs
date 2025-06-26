@@ -4,7 +4,6 @@ using System.Runtime.CompilerServices;
 using System.Text.Json;
 using DalilBus.Config;
 using DalilBus.MVVM.Models;
-using Microsoft.Maui.Networking;
 
 namespace DalilBus.MVVM.ViewModels
 {
@@ -96,7 +95,7 @@ namespace DalilBus.MVVM.ViewModels
             SelectedDestinationPlace = temp;
         }
 
-        private async Task LoadPointsAsync()
+        public async Task LoadPointsAsync()
         {
             try
             {

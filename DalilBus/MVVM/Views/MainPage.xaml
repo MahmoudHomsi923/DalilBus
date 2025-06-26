@@ -45,7 +45,7 @@
                                ItemDisplayBinding="{Binding Name}"
                                HeightRequest="400"  
                                HorizontalOptions="Fill"  
-                               TitleColor="Gray" />
+                               TitleColor="Gray"/>
                     </Border>
                 </Grid>
 

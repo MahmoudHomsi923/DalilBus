@@ -1,12 +1,12 @@
 ﻿using DalilBus.Config;
 using DalilBus.MVVM.ViewModels;
-using Microsoft.Maui.Networking;
+
 
 namespace DalilBus
 {
     public partial class MainPage : ContentPage
     {
-        private bool _isCheckingConnection = false;
+        private bool _isAlertVisible = false;
         public MainPage()
         {
             InitializeComponent();
@@ -14,6 +14,33 @@ namespace DalilBus
             Title = "Search بحث";
         }
 
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            await Task.Delay(500);
+
+            while (!ConnectivityHelper.IsConnectedToInternet())
+            {
+                await DisplayAlert(
+            "لا يوجد اتصال بالإنترنت",
+            "يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى.\nPlease check your internet connection and try again.",
+            "موافق / OK");
+
+                await Task.Delay(1000);
+            }
+
+            await Task.Delay(1000);
+
+            if (BindingContext is MainPageViewModel vm)
+            {
+                if (vm.Places is null || vm.Places.Count == 0)
+                {
+                    _ = vm.LoadPointsAsync();
+                }
+            }
+
+        }
 
         private async void OnBtnExchangeClicked(object sender, EventArgs e)
         {
