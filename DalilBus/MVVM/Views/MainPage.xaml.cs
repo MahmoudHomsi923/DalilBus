@@ -6,7 +6,6 @@ namespace DalilBus
 {
     public partial class MainPage : ContentPage
     {
-        private bool _isAlertVisible = false;
         public MainPage()
         {
             InitializeComponent();
@@ -36,7 +35,7 @@ namespace DalilBus
             {
                 if (vm.Places is null || vm.Places.Count == 0)
                 {
-                    _ = vm.LoadPointsAsync();
+                    _ = vm.LoadPlacesAsync();
                 }
             }
 
@@ -69,7 +68,7 @@ namespace DalilBus
             if (BindingContext is MainPageViewModel vm)
             {
                 // Navigate to the TravelsPage with parameters
-                await Shell.Current.GoToAsync($"TravelsPage?StartPlace={vm.SelectedStartPlace.Name}&DestinationPlace={vm.SelectedDestinationPlace.Name}&SelectedDate={vm.SelectedDate:yyyy-MM-dd}&SelectedTime={vm.SelectedTime:hh\\:mm}");
+                await Shell.Current.GoToAsync($"TravelsPage?StartPlace={vm.SelectedStartPlace?.Name}&DestinationPlace={vm.SelectedDestinationPlace?.Name}&SelectedDate={vm.SelectedDate:yyyy-MM-dd}&SelectedTime={vm.SelectedTime:hh\\:mm}");
             }
         }
 
