@@ -15,6 +15,6 @@ namespace DalilBus.Config
         public const string BaseUrl = "https://dlxjnvddmnizpdpjnrnb.supabase.co/rest/v1/";
 
         // Endpoint for fetching places
-        public const string PlacesEndpoint = "places?select=id,name";
+        public const string PlacesEndpoint = "places?select=id,nameEn,nameAr";
     }
 }

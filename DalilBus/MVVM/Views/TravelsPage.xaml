@@ -10,7 +10,6 @@
             Text="PointFrom"
             VerticalOptions="Center" 
             HorizontalOptions="Fill"
-            FlowDirection="RightToLeft"
             HorizontalTextAlignment="Center"
             BackgroundColor="{StaticResource Primary}"
             FontSize="16" />
@@ -20,7 +19,6 @@
             Text="date and Time"
             VerticalOptions="Center" 
             HorizontalOptions="Fill"
-            FlowDirection="RightToLeft"
             HorizontalTextAlignment="Center"
             BackgroundColor="{StaticResource Primary}"
             FontSize="16" />

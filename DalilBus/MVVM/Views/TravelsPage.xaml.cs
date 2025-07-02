@@ -1,4 +1,6 @@
-﻿using System.Data.SqlTypes;
+﻿
+
+using System.Globalization;
 
 namespace DalilBus.MVVM.Views;
 
@@ -12,6 +14,10 @@ public partial class TravelsPage : ContentPage
     private string destinationPlace { get; set; } = string.Empty; // Initialize to avoid null
     private string selectedDate { get; set; } = string.Empty; // Initialize to avoid null
     private string selectedTime { get; set; } = string.Empty; // Initialize to avoid null
+
+    private const string RightArrowEmoji = " ➡️ "; // U+27A1 + U+FE0F
+
+    private const string LeftArrowEmoji = " ⬅️ "; // U+2B05 + U+FE0F
 
     public string StartPlace
     {
@@ -53,6 +59,9 @@ public partial class TravelsPage : ContentPage
         }
     }
 
+    private string GetArrowEmoji() => 
+        CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "ar" ? LeftArrowEmoji : RightArrowEmoji;
+
     public TravelsPage()
     {
         InitializeComponent();
@@ -64,9 +73,7 @@ public partial class TravelsPage : ContentPage
     {
         base.OnAppearing();
 
-        // Zeige die Werte auf der Seite an (z. B. in Labels)
-        lblPlaces.Text = $"{DestinationPlace}   ⬅️   {StartPlace}";
+        lblPlaces.Text = $"{StartPlace}   {GetArrowEmoji()}   {DestinationPlace}";
         lblDateTime.Text = $"{SelectedDate}  •  {SelectedTime}";
-
     }
 }

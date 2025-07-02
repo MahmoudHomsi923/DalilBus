@@ -12,7 +12,7 @@
     <Shell.TitleView>
         <Grid Padding="10,0,10,0">
             <Label x:Name="TitleLabel"
-               HorizontalOptions="End"
+               HorizontalOptions="Start"
                VerticalOptions="Center"
                FontSize="20"/>
         </Grid>
@@ -21,16 +21,16 @@
     <TabBar>
 
         <ShellContent
-            x:Name="moreTab"
-            Title="More المزيد"
-            Icon="info.svg"
-            ContentTemplate="{DataTemplate views:AboutPage}" />
-
-        <ShellContent
             x:Name="searchTab"
             Title="Search بحث"
             Icon="search.svg"
             ContentTemplate="{DataTemplate local:MainPage}" />
+        
+        <ShellContent
+            x:Name="moreTab"
+            Title="More المزيد"
+            Icon="info.svg"
+            ContentTemplate="{DataTemplate views:AboutPage}" />
 
 
     </TabBar>
