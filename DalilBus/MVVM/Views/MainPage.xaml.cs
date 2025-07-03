@@ -1,5 +1,7 @@
-﻿using DalilBus.Config;
+﻿using AndroidX.Annotations;
+using DalilBus.Config;
 using DalilBus.MVVM.ViewModels;
+using System.Globalization;
 
 
 namespace DalilBus
@@ -68,10 +70,13 @@ namespace DalilBus
             if (BindingContext is MainPageViewModel vm)
             {
                 // Navigate to the TravelsPage with parameters
-                await Shell.Current.GoToAsync($"TravelsPage?StartPlace={vm.SelectedStartPlace?.Name}&DestinationPlace={vm.SelectedDestinationPlace?.Name}&SelectedDate={vm.SelectedDate:yyyy-MM-dd}&SelectedTime={vm.SelectedTime:hh\\:mm}");
+                await Shell.Current.GoToAsync(
+                            $"TravelsPage?StartPlace={vm.SelectedStartPlace?.Name}" +
+                            $"&DestinationPlace={vm.SelectedDestinationPlace?.Name}" +
+                            $"&SelectedDate={vm.SelectedDate:dddd dd-MM-yyyy}" +
+                            $"&SelectedTime={DateTime.Today.Add(vm.SelectedTime).ToString("hh:mm tt")}");
             }
         }
-
     }
 
 }

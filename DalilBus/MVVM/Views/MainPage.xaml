@@ -87,7 +87,7 @@
                             <RoundRectangle CornerRadius="3" />
                         </Border.StrokeShape>
                         <DatePicker x:Name="datePicker"  
-                                   Format="dd/MM/yyyy"    
+                                   Format="dddd dd/MM/yyyy"    
                                    Date="{Binding SelectedDate}"  
                                    HeightRequest="400"  
                                    HorizontalOptions="Fill"/>
