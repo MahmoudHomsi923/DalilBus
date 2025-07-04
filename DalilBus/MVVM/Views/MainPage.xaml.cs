@@ -1,7 +1,5 @@
-﻿using AndroidX.Annotations;
-using DalilBus.Config;
+﻿using DalilBus.Config;
 using DalilBus.MVVM.ViewModels;
-using System.Globalization;
 
 
 namespace DalilBus

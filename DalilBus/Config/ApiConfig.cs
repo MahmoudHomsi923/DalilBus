@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace DalilBus.Config
 {
@@ -16,5 +12,11 @@ namespace DalilBus.Config
 
         // Endpoint for fetching places
         public const string PlacesEndpoint = "places?select=id,nameEn,nameAr";
+
+        // Endpoint for fetching companies
+        public const string CompaniesEndpoint = "companies?select=id,nameEn,nameAr";
+
+        // Endpoint for fetching travels
+        public const string TravelsEndpoint = "travels?select=id,startPlaceID,destinationPlaceID,depatureDate,arrivalDate,depatureTime,arrivalTime,companyID&order=depatureDate.asc,depatureTime.asc";
     }
 }
