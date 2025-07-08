@@ -1,7 +1,6 @@
 ﻿using DalilBus.Config;
 using DalilBus.Helper;
 using DalilBus.MVVM.Models;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -10,6 +9,8 @@ namespace DalilBus.Services
 {
     public class SharedDataService
     {
+        private readonly ApiClient ApiClient;
+
         private List<Place> _placesList = new List<Place>();
         private List<Company> _companiesList = new List<Company>();
         private List<Travel> _travelsList = new List<Travel>();
@@ -92,19 +93,24 @@ namespace DalilBus.Services
             }
         }
 
+        public SharedDataService(ApiClient apiClient)
+        {
+            ApiClient = apiClient ?? throw new ArgumentNullException(nameof(apiClient), "ApiClient cannot be null");
+        }
+
         public async Task LoadPlacesAsync()
         {
-            PlacesList = await ApiClient.GetFromSuberbaseAsync<List<Place>>(ApiConfig.PlacesEndpoint) ?? new List<Place>();
+            PlacesList = await ApiClient.GetFromSubabaseAsync<List<Place>>(ApiConfig.PlacesEndpoint) ?? new List<Place>();
         }
 
         public async Task LoadCompaniesAsync()
         {
-            CompaniesList = await ApiClient.GetFromSuberbaseAsync<List<Company>>(ApiConfig.CompaniesEndpoint) ?? new List<Company>();
+            CompaniesList = await ApiClient.GetFromSubabaseAsync<List<Company>>(ApiConfig.CompaniesEndpoint) ?? new List<Company>();
         }
 
         public async Task LoadTravelsAsync()
         {
-            TravelsList = await ApiClient.GetFromSuberbaseAsync<List<Travel>>(ApiConfig.TravelsEndpoint) ?? new List<Travel>();
+            TravelsList = await ApiClient.GetFromSubabaseAsync<List<Travel>>(ApiConfig.TravelsEndpoint) ?? new List<Travel>();
         }
 
         public void SwapPoints()

@@ -4,20 +4,17 @@ using System.Net.Http.Json;
 
 namespace DalilBus.Helper
 {
-    public static class ApiClient
+    public class ApiClient
     {
-        public static readonly HttpClient _httpClient;
+        public readonly HttpClient _httpClient;
 
-        static ApiClient()
+        public ApiClient()
         {
-            _httpClient = new HttpClient
-            {
-                BaseAddress = new Uri(ApiConfig.BaseUrl)
-            };
+            _httpClient = new HttpClient { BaseAddress = new Uri(ApiConfig.BaseUrl) };
             _httpClient.DefaultRequestHeaders.Add("apiKey", ApiConfig.ApiKey);
         }
 
-        public static async Task<T?> GetFromSuberbaseAsync<T>(string endpoint)
+        public async Task<T?> GetFromSubabaseAsync<T>(string endpoint)
         {
             var response = await _httpClient.GetAsync(endpoint);
             
@@ -27,7 +24,7 @@ namespace DalilBus.Helper
                 {
                     HttpStatusCode.NotFound => new ErrorMessage(
                         "Data not found | البيانات غير موجودة",
-                        "Could not fetch resources | تعذر جلب البيانات"),
+                        "Could not fetch data | تعذر جلب البيانات"),
 
                     HttpStatusCode.Unauthorized => new ErrorMessage(
                         "Unauthorized | غير مصرح",
@@ -41,7 +38,7 @@ namespace DalilBus.Helper
             }
 
             return await response.Content.ReadFromJsonAsync<T>()
-                ?? throw new HttpRequestException("API returned null | لم يتم العثور على بيانات");
+                ?? throw new HttpRequestException("Error loading data of | خطأ في تحميل بيانات");
         }
 
         private record ErrorMessage(string Tittel, string Details);

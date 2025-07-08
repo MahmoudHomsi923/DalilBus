@@ -1,18 +1,21 @@
 ﻿using DalilBus.Config;
 using DalilBus.MVVM.ViewModels;
-using DalilBus.Services;
 
 
 namespace DalilBus
 {
     public partial class MainPage : ContentPage
     {
+        private readonly MainPageViewModel _mainPageViewModel;
 
-        public MainPage()
+        public MainPage(MainPageViewModel mainPageViewModel )
         {
             InitializeComponent();
             // Set the title of the page
             Title = "Search بحث";
+            // Set the BindingContext to the MainPageViewModel instance
+            _mainPageViewModel = mainPageViewModel ?? throw new ArgumentNullException(nameof(mainPageViewModel), "MainPageViewModel cannot be null");
+            BindingContext = _mainPageViewModel;
         }
 
         protected override async void OnAppearing()
@@ -33,11 +36,11 @@ namespace DalilBus
 
             await Task.Delay(1000);
 
-            if (_sharedDataService.PlacesList is null || _sharedDataService.PlacesList.Count == 0)
+            if (_mainPageViewModel != null)
             {
-                _ = _sharedDataService.LoadPlacesAndCompaniesAsync();
+                await _mainPageViewModel.LoadPlacesAsync();
+                await _mainPageViewModel.LoadCompaniesAsync();
             }
-
         }
 
         private async void OnBtnExchangeClicked(object sender, EventArgs e)
@@ -48,7 +51,7 @@ namespace DalilBus
             btnExchange.Rotation = 0;
 
             // Swap the start and destination points in the ViewModel
-            _sharedDataService.SwapPoints();
+            _mainPageViewModel.SwapPoints();
         }
 
         private async void OnBtnSearchClicked(object sender, EventArgs e)
