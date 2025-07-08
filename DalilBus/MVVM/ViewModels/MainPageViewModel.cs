@@ -36,6 +36,8 @@ namespace DalilBus.MVVM.ViewModels
             get => _sharedDataService.SelectedTime; set => _sharedDataService.SelectedTime = value;
         }
 
+        public bool CanSearch => _sharedDataService.CanSearch;
+
         public MainPageViewModel(SharedDataService sharedDataService)
         {
             _sharedDataService = sharedDataService;

@@ -8,8 +8,9 @@ namespace DalilBus.Helper
     {
         public readonly HttpClient _httpClient;
 
-        public ApiClient()
+        public ApiClient(HttpClient httpClient)
         {
+            _httpClient = httpClient;
             _httpClient = new HttpClient { BaseAddress = new Uri(ApiConfig.BaseUrl) };
             _httpClient.DefaultRequestHeaders.Add("apiKey", ApiConfig.ApiKey);
         }

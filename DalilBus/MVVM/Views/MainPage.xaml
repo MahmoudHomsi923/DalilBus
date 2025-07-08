@@ -4,9 +4,6 @@
             xmlns:vm="clr-namespace:DalilBus.MVVM.ViewModels" 
             x:Class="DalilBus.MainPage">  
 
-   <ContentPage.BindingContext>  
-       <vm:MainPageViewModel />  
-   </ContentPage.BindingContext>  
 
    <ContentPage.Resources>  
        <x:String x:Key="exchange">&#xf0ec;</x:String>  
