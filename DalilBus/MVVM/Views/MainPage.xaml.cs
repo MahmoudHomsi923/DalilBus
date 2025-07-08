@@ -1,11 +1,13 @@
 ﻿using DalilBus.Config;
 using DalilBus.MVVM.ViewModels;
+using DalilBus.Services;
 
 
 namespace DalilBus
 {
     public partial class MainPage : ContentPage
     {
+
         public MainPage()
         {
             InitializeComponent();
@@ -31,12 +33,9 @@ namespace DalilBus
 
             await Task.Delay(1000);
 
-            if (BindingContext is MainPageViewModel vm)
+            if (_sharedDataService.PlacesList is null || _sharedDataService.PlacesList.Count == 0)
             {
-                if (vm.Places is null || vm.Places.Count == 0)
-                {
-                    _ = vm.LoadPlacesAsync();
-                }
+                _ = _sharedDataService.LoadPlacesAndCompaniesAsync();
             }
 
         }
@@ -48,11 +47,8 @@ namespace DalilBus
             // Reset the rotation to its original state
             btnExchange.Rotation = 0;
 
-            if (BindingContext is MainPageViewModel vm)
-            {
-                // Swap the start and destination points in the ViewModel
-                vm.SwapPoints();
-            }
+            // Swap the start and destination points in the ViewModel
+            _sharedDataService.SwapPoints();
         }
 
         private async void OnBtnSearchClicked(object sender, EventArgs e)

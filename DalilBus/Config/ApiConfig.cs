@@ -2,7 +2,7 @@
 
 namespace DalilBus.Config
 {
-    internal class ApiConfig
+    public class ApiConfig
     {
         // API key for authentication
         public const string ApiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRseGpudmRkbW5penBkcGpucm5iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk2NjAyODEsImV4cCI6MjA1NTIzNjI4MX0.59EryWixS4bafMWKMQd8buAMXLnfduIEOCdmnuPqGEc";

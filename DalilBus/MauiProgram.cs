@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using DalilBus.Services;
+using Microsoft.Extensions.Logging;
 
 namespace DalilBus;
 
@@ -17,6 +18,9 @@ public static class MauiProgram
                 fonts.AddFont("Free-Regular-400.otf", "FAR");
                 fonts.AddFont("Free-Solid-900.otf", "FAS");
             });
+		// Services register
+		builder.Services.AddSingleton<SharedDataService>();
+
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
