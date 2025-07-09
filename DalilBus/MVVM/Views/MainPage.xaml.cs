@@ -13,9 +13,8 @@ namespace DalilBus
             InitializeComponent();
             // Set the title of the page
             Title = "Search بحث";
-            // Set the BindingContext to the MainPageViewModel instance
+            // Intialize MainPageViewModel 
             _mainPageViewModel = mainPageViewModel ?? throw new ArgumentNullException(nameof(mainPageViewModel), "MainPageViewModel cannot be null");
-            BindingContext = _mainPageViewModel;
         }
 
         protected override async void OnAppearing()
@@ -40,6 +39,8 @@ namespace DalilBus
             {
                 await _mainPageViewModel.LoadPlacesAsync();
                 await _mainPageViewModel.LoadCompaniesAsync();
+                await _mainPageViewModel.InitializeDataAsync();
+                BindingContext = _mainPageViewModel;
             }
         }
 
