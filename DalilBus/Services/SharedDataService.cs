@@ -1,6 +1,7 @@
 ﻿using DalilBus.Config;
 using DalilBus.Helper;
 using DalilBus.MVVM.Models;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -18,7 +19,7 @@ namespace DalilBus.Services
         private Place? _selectedDestinationPlace;
         private DateTime selectedDate;
         private TimeSpan selectedTime;
-        public bool CanSearch => SelectedStartPlace != null && SelectedDestinationPlace != null;
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public List<Place> PlacesList
@@ -58,7 +59,6 @@ namespace DalilBus.Services
             {
                 _selectedStartPlace = value;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(CanSearch));
             }
         }
 
@@ -69,7 +69,6 @@ namespace DalilBus.Services
             {
                 _selectedDestinationPlace = value;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(CanSearch));
             }
         }
 
@@ -93,6 +92,13 @@ namespace DalilBus.Services
             }
         }
 
+        public ObservableCollection<Place> FilteredPlacesList(int? excludeId)
+        {
+            if (excludeId == 0) throw new ArgumentNullException(nameof(excludeId), "Excluded ID cannot be 0");
+
+            return new ObservableCollection<Place>(_placesList.Where(p => p.Id != excludeId).ToList());
+        }
+
         public SharedDataService(ApiClient apiClient)
         {
             ApiClient = apiClient ?? throw new ArgumentNullException(nameof(apiClient), "ApiClient cannot be null");
@@ -111,13 +117,6 @@ namespace DalilBus.Services
         public async Task LoadTravelsAsync()
         {
             TravelsList = await ApiClient.GetFromSubabaseAsync<List<Travel>>(ApiConfig.TravelsEndpoint) ?? new List<Travel>();
-        }
-
-        public void SwapPoints()
-        {
-            var temp = SelectedStartPlace;
-            SelectedStartPlace = SelectedDestinationPlace;
-            SelectedDestinationPlace = temp;
         }
 
         protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)

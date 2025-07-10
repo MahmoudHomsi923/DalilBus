@@ -9,76 +9,135 @@ namespace DalilBus.MVVM.ViewModels
     public class MainPageViewModel : INotifyPropertyChanged
     {
         private readonly SharedDataService _sharedDataService;
-        private ObservableCollection<Place>? _availableStartPlaces;
-        private ObservableCollection<Place>? _availableDestinationPlaces;
+
+        private ObservableCollection<Place>? _availableStartPlacesList;
+        private ObservableCollection<Place>? _availableDestinationPlacesList;
+
+        private Place? _selectedStartPlace;
+        private Place? _selectedDestinationPlace;
+        private DateTime _selectedDate;
+        private TimeSpan _selectedTime;
+
+        private bool _isUpdatingLists;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public ObservableCollection<Place>? AvailableStartPlaces
+        public ObservableCollection<Place>? AvailableStartPlacesList
         {
-            get { return _availableStartPlaces; }
+            get { return _availableStartPlacesList; }
             set
             {
-                _availableStartPlaces = value;
+                _availableStartPlacesList = value;
                 OnPropertyChanged();
             }
         }
 
-        public ObservableCollection<Place>? AvailableDestinationPlaces
+        public ObservableCollection<Place>? AvailableDestinationPlacesList
         {
-            get { return _availableDestinationPlaces; }
+            get { return _availableDestinationPlacesList; }
             set
             {
-                _availableDestinationPlaces = value;
+                _availableDestinationPlacesList = value;
                 OnPropertyChanged();
             }
         }
 
         public Place? SelectedStartPlace
         {
-            get => _sharedDataService.SelectedStartPlace;
-            set 
+            get => _selectedStartPlace;
+            set
             {
-                _sharedDataService.SelectedStartPlace = value;
-                AvailableDestinationPlaces = new ObservableCollection<Place>(_sharedDataService.PlacesList.Where(p => _sharedDataService.SelectedStartPlace == null ||
-                                    p.Id != _sharedDataService.SelectedStartPlace.Id).ToList());
-                OnPropertyChanged(nameof(AvailableDestinationPlaces));
+                if (_selectedStartPlace == value) return;
+
+                _selectedStartPlace = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(CanSearch));
+
+                if (!_isUpdatingLists)
+                {
+                    _isUpdatingLists = true;
+                    UpdateDestinationList();
+                    _isUpdatingLists = false;
+                }
             }
         }
 
         public Place? SelectedDestinationPlace
         {
-            get => _sharedDataService.SelectedDestinationPlace;
+            get => _selectedDestinationPlace;
             set
             {
-                _sharedDataService.SelectedDestinationPlace = value;
-                AvailableStartPlaces = new ObservableCollection<Place>(_sharedDataService.PlacesList.Where(p => _sharedDataService.SelectedDestinationPlace == null ||
-                                    p.Id != _sharedDataService.SelectedDestinationPlace.Id).ToList());
-                OnPropertyChanged(nameof(AvailableStartPlaces));
+                if (_selectedDestinationPlace == value) return;
+
+                _selectedDestinationPlace = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(CanSearch));
+
+                if (!_isUpdatingLists)
+                {
+                    _isUpdatingLists = true;
+                    UpdateStartList();
+                    _isUpdatingLists = false;
+                }
             }
         }
 
         public DateTime SelectedDate
         {
-            get => _sharedDataService.SelectedDate; set => _sharedDataService.SelectedDate = value;
+            get => _selectedDate;
+            set 
+            {
+                _selectedDate = value;
+                OnPropertyChanged();
+            }
         }
 
         public TimeSpan SelectedTime
         {
-            get => _sharedDataService.SelectedTime; set => _sharedDataService.SelectedTime = value;
+            get => _selectedTime;
+            set
+            {
+                _selectedTime = value;
+                OnPropertyChanged();
+            }
         }
 
-        public bool CanSearch => _sharedDataService.CanSearch;
+        public bool CanSearch => SelectedStartPlace != null && SelectedDestinationPlace != null;
 
         public MainPageViewModel(SharedDataService sharedDataService)
         {
             _sharedDataService = sharedDataService;
+            SelectedDate = DateTime.Now.Date; // Default to today's date
+            SelectedTime = DateTime.Now.TimeOfDay; // Default to current time
         }
 
         public async Task InitializeDataAsync()
         {
-            AvailableStartPlaces = new ObservableCollection<Place>(_sharedDataService.PlacesList);
-            AvailableDestinationPlaces = new ObservableCollection<Place>(_sharedDataService.PlacesList);
+            await Task.Run(() =>
+            {
+                AvailableStartPlacesList = new ObservableCollection<Place>(_sharedDataService.PlacesList);
+                AvailableDestinationPlacesList = new ObservableCollection<Place>(_sharedDataService.PlacesList);
+            });
+        }
+
+        private void UpdateStartList()
+        {
+            AvailableStartPlacesList = new ObservableCollection<Place>(
+                _sharedDataService.PlacesList.Where(p =>
+                    SelectedDestinationPlace == null ||
+                    p.Id != SelectedDestinationPlace.Id
+                )
+            );
+        }
+
+        private void UpdateDestinationList()
+        {
+            AvailableDestinationPlacesList = new ObservableCollection<Place>(
+                _sharedDataService.PlacesList.Where(p =>
+                    SelectedStartPlace == null ||
+                    p.Id != SelectedStartPlace.Id
+                )
+            );
         }
 
         public async Task LoadPlacesAsync()
@@ -97,7 +156,9 @@ namespace DalilBus.MVVM.ViewModels
         }
         public void SwapPoints()
         {
-            _sharedDataService.SwapPoints();
+            var temp = SelectedStartPlace;
+            SelectedStartPlace = SelectedDestinationPlace;
+            SelectedDestinationPlace = temp;
         }
 
         protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)

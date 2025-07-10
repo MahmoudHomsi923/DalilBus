@@ -34,7 +34,7 @@
                         </Border.StrokeShape>
                         <Picker x:Name="pickerFrom"  
                                Title="Select اختيار"    
-                               ItemsSource="{Binding AvailableStartPlaces}"  
+                               ItemsSource="{Binding AvailableStartPlacesList}"  
                                SelectedItem="{Binding SelectedStartPlace}" 
                                ItemDisplayBinding="{Binding Name}"
                                HeightRequest="400"  
@@ -66,7 +66,7 @@
                         </Border.StrokeShape>
                         <Picker x:Name="pickerTo"  
                             Title="Select اختيار"   
-                            ItemsSource="{Binding AvailableDestinationPlaces}"  
+                            ItemsSource="{Binding AvailableDestinationPlacesList}"  
                             SelectedItem="{Binding SelectedDestinationPlace}"
                             ItemDisplayBinding="{Binding Name}" 
                             HeightRequest="400"  
