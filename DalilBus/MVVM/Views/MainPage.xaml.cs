@@ -15,6 +15,7 @@ namespace DalilBus
             Title = "Search بحث";
             // Intialize MainPageViewModel 
             _mainPageViewModel = mainPageViewModel ?? throw new ArgumentNullException(nameof(mainPageViewModel), "MainPageViewModel cannot be null");
+            BindingContext = _mainPageViewModel;
         }
 
         protected override async void OnAppearing()
@@ -33,14 +34,18 @@ namespace DalilBus
                 await Task.Delay(1000);
             }
 
-            await Task.Delay(1000);
 
             if (_mainPageViewModel != null)
             {
-                await _mainPageViewModel.LoadPlacesAsync();
-                await _mainPageViewModel.LoadCompaniesAsync();
-                await _mainPageViewModel.InitializeDataAsync();
-                BindingContext = _mainPageViewModel;
+                _mainPageViewModel.IsLoading = true;
+
+                await Task.WhenAll(
+                    _mainPageViewModel.LoadTravelsAsync(),
+                    _mainPageViewModel.LoadPlacesAsync(),
+                    _mainPageViewModel.LoadCompaniesAsync()
+                );
+                _mainPageViewModel.InitializeAvailableLists();
+                _mainPageViewModel.IsLoading = false;
             }
         }
 

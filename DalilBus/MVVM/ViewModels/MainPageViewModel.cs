@@ -18,7 +18,17 @@ namespace DalilBus.MVVM.ViewModels
         private DateTime _selectedDate;
         private TimeSpan _selectedTime;
 
-        private bool _isUpdatingLists;
+        private bool isLoading = false;
+
+        public bool IsLoading
+        {
+            get => isLoading;
+            set
+            {
+                isLoading = value;
+                OnPropertyChanged();
+            }
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -49,16 +59,13 @@ namespace DalilBus.MVVM.ViewModels
             {
                 if (_selectedStartPlace == value) return;
 
-                _selectedStartPlace = value;
+                AvailableDestinationPlacesList = new ObservableCollection<Place>(
+                    _sharedDataService.PlacesList.Where(p => value == null || p.Id != value.Id)
+                );
+
+                _selectedStartPlace = AvailableStartPlacesList?.Where(p => p.Id == value?.Id).FirstOrDefault() ?? null;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(CanSearch));
-
-                if (!_isUpdatingLists)
-                {
-                    _isUpdatingLists = true;
-                    UpdateDestinationList();
-                    _isUpdatingLists = false;
-                }
             }
         }
 
@@ -69,16 +76,13 @@ namespace DalilBus.MVVM.ViewModels
             {
                 if (_selectedDestinationPlace == value) return;
 
-                _selectedDestinationPlace = value;
+                AvailableStartPlacesList = new ObservableCollection<Place>(
+                    _sharedDataService.PlacesList.Where(p => value == null || p.Id != value.Id)
+                );
+
+                _selectedDestinationPlace = AvailableDestinationPlacesList?.Where(p => p.Id == value?.Id).FirstOrDefault() ?? null;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(CanSearch));
-
-                if (!_isUpdatingLists)
-                {
-                    _isUpdatingLists = true;
-                    UpdateStartList();
-                    _isUpdatingLists = false;
-                }
             }
         }
 
@@ -111,32 +115,25 @@ namespace DalilBus.MVVM.ViewModels
             SelectedTime = DateTime.Now.TimeOfDay; // Default to current time
         }
 
-        public async Task InitializeDataAsync()
+        public void InitializeAvailableLists()
         {
-            await Task.Run(() =>
-            {
-                AvailableStartPlacesList = new ObservableCollection<Place>(_sharedDataService.PlacesList);
-                AvailableDestinationPlacesList = new ObservableCollection<Place>(_sharedDataService.PlacesList);
-            });
+             AvailableStartPlacesList = new ObservableCollection<Place>(_sharedDataService.PlacesList);
+             AvailableDestinationPlacesList = new ObservableCollection<Place>(_sharedDataService.PlacesList);
         }
 
         private void UpdateStartList()
         {
+            int tempId = SelectedDestinationPlace?.Id ?? 0;
             AvailableStartPlacesList = new ObservableCollection<Place>(
-                _sharedDataService.PlacesList.Where(p =>
-                    SelectedDestinationPlace == null ||
-                    p.Id != SelectedDestinationPlace.Id
-                )
+                _sharedDataService.PlacesList.Where(p => p.Id != tempId)
             );
         }
 
         private void UpdateDestinationList()
         {
+            int tempId = SelectedStartPlace?.Id ?? 0;
             AvailableDestinationPlacesList = new ObservableCollection<Place>(
-                _sharedDataService.PlacesList.Where(p =>
-                    SelectedStartPlace == null ||
-                    p.Id != SelectedStartPlace.Id
-                )
+                _sharedDataService.PlacesList.Where(p => p.Id != tempId)
             );
         }
 
