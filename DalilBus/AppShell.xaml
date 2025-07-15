@@ -17,7 +17,6 @@
                FontSize="20"/>
         </Grid>
     </Shell.TitleView>
-
     <TabBar>
 
         <ShellContent

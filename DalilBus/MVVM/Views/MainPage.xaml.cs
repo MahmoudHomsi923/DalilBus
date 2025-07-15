@@ -70,14 +70,11 @@ namespace DalilBus
                 return; // Exit the method if no connection is available
             }
 
-            if (BindingContext is MainPageViewModel vm)
+            if (_mainPageViewModel != null)
             {
+                _mainPageViewModel.InitializeSharedDataService();
                 // Navigate to the TravelsPage with parameters
-                await Shell.Current.GoToAsync(
-                            $"TravelsPage?StartPlace={vm.SelectedStartPlace?.Name}" +
-                            $"&DestinationPlace={vm.SelectedDestinationPlace?.Name}" +
-                            $"&SelectedDate={vm.SelectedDate:dddd dd-MM-yyyy}" +
-                            $"&SelectedTime={DateTime.Today.Add(vm.SelectedTime).ToString("hh:mm tt")}");
+                await Shell.Current.GoToAsync("TravelsPage");
             }
         }
     }

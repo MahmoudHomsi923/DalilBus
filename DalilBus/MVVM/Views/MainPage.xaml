@@ -34,14 +34,14 @@
                         </Border.StrokeShape>  
                         <Picker x:Name="pickerFrom"  
                                 Title="Select اختيار"    
-                                ItemsSource="{Binding AvailableStartPlacesList}"  
+                                ItemsSource="{Binding PlacesList}"  
                                 SelectedItem="{Binding SelectedStartPlace}"  
                                 ItemDisplayBinding="{Binding Name}"  
                                 HeightRequest="400"  
                                 HorizontalOptions="Fill"  
                                 TitleColor="Gray"/>  
-                    </Border>  
-                </Grid>  
+                    </Border>
+                </Grid>
 
                 <Grid Margin="15,-20,15,-20" RowDefinitions="Auto,Auto,Auto">  
                     <Frame HeightRequest="50" WidthRequest="50" CornerRadius="25" BackgroundColor="Gold" BorderColor="Transparent" HasShadow="False" Padding="0">  
@@ -66,7 +66,7 @@
                         </Border.StrokeShape>  
                         <Picker x:Name="pickerTo"  
                                 Title="Select اختيار"   
-                                ItemsSource="{Binding AvailableDestinationPlacesList}"  
+                                ItemsSource="{Binding PlacesList}"  
                                 SelectedItem="{Binding SelectedDestinationPlace}"  
                                 ItemDisplayBinding="{Binding Name}"  
                                 HeightRequest="400"  
@@ -104,7 +104,7 @@
                                     HeightRequest="400"  
                                     HorizontalOptions="Fill"/>  
                     </Border>  
-                </Grid>  
+                </Grid>
 
                 <Grid Margin="0,20,0,10">  
                     <Button Text="Search بحث"  
