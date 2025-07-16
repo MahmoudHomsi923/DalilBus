@@ -13,6 +13,7 @@ public partial class TravelsPage : ContentPage
         InitializeComponent();
         // Set the title here
         VM = travelsPageViewModel;
+        // Initialize the BindingContext with TravelsPageViewModel instance
         BindingContext = VM ?? throw new ArgumentNullException(nameof(travelsPageViewModel), "TravelsPageViewModel cannot be null");
         // Set the title of the page
         Title = "Travels الرحلات";
@@ -21,8 +22,6 @@ public partial class TravelsPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-
-        lblPlaces.Text = $"{VM.SelectedStartPlace?.Name}   {VM.GetArrowEmoji()}   {VM.SelectedDestinationPlace?.Name}";
     }
 
 }

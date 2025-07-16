@@ -90,28 +90,23 @@ namespace DalilBus.MVVM.ViewModels
         public MainPageViewModel(SharedDataService sharedDataService)
         {
             _sharedDataService = sharedDataService;
-            SelectedDate = DateTime.Now.Date; // Default to today's date
-            SelectedTime = DateTime.Now.TimeOfDay; // Default to current time
         }
 
-        public void InitializeAvailableLists()
+        public async Task InitializeOrReferechUiElements()
         {
-            PlacesList = new ObservableCollection<Place>(_sharedDataService.PlacesList);
-        }
-
-        public async Task LoadPlacesAsync()
-        {
-            await _sharedDataService.LoadPlacesAsync();
-        }
-
-        public async Task LoadCompaniesAsync()
-        {
-            await _sharedDataService.LoadCompaniesAsync();
-        }
-
-        public async Task LoadTravelsAsync()
-        {
-            await _sharedDataService.LoadTravelsAsync();
+            if (PlacesList == null)
+            {
+                await _sharedDataService.LoadPlacesAsync();
+                await _sharedDataService.LoadCompaniesAsync();
+                PlacesList = new ObservableCollection<Place>(_sharedDataService.PlacesList);
+                SelectedDate = DateTime.Now.Date; // Default to today's date
+                SelectedTime = DateTime.Now.TimeOfDay; // Default to current time
+            }
+            else
+            {
+                SelectedDate = _sharedDataService.SelectedDate;
+                SelectedTime = _sharedDataService.SelectedTime;
+            }   
         }
 
         public void SwapPoints()

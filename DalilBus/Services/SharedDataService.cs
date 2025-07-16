@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 
 namespace DalilBus.Services
 {
-    public class SharedDataService
+    public class SharedDataService : INotifyPropertyChanged
     {
         private readonly ApiClient ApiClient;
 
