@@ -72,7 +72,6 @@ namespace DalilBus
 
             if (_mainPageViewModel != null)
             {
-                _mainPageViewModel.InitializeSharedDataService();
                 // Navigate to the TravelsPage with parameters
                 await Shell.Current.GoToAsync("TravelsPage");
             }

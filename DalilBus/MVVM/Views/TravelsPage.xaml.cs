@@ -24,4 +24,5 @@ public partial class TravelsPage : ContentPage
 
         lblPlaces.Text = $"{VM.SelectedStartPlace?.Name}   {VM.GetArrowEmoji()}   {VM.SelectedDestinationPlace?.Name}";
     }
+
 }

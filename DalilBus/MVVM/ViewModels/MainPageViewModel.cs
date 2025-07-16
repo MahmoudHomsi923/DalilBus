@@ -14,10 +14,6 @@ namespace DalilBus.MVVM.ViewModels
 
         private ObservableCollection<Place>? _PlacesList;
 
-        private Place? _selectedStartPlace;
-        private Place? _selectedDestinationPlace;
-        private DateTime _selectedDate;
-        private TimeSpan _selectedTime;
 
         private bool isLoading = false;
 
@@ -43,13 +39,13 @@ namespace DalilBus.MVVM.ViewModels
 
         public Place? SelectedStartPlace
         {
-            get => _selectedStartPlace;
+            get => _sharedDataService.SelectedStartPlace;
             set
             {
-                if (_selectedStartPlace == value) return;
-                _selectedStartPlace = value;
+                if (_sharedDataService.SelectedStartPlace == value) return;
+                _sharedDataService.SelectedStartPlace = value;
                 OnPropertyChanged();
-                if (_selectedStartPlace == SelectedDestinationPlace)
+                if (_sharedDataService.SelectedStartPlace == SelectedDestinationPlace)
                     SelectedDestinationPlace = null;
                 OnPropertyChanged(nameof(CanSearch));
             }
@@ -57,13 +53,13 @@ namespace DalilBus.MVVM.ViewModels
 
         public Place? SelectedDestinationPlace
         {
-            get => _selectedDestinationPlace;
+            get => _sharedDataService.SelectedDestinationPlace;
             set
             {
-                if (_selectedDestinationPlace == value) return;
-                _selectedDestinationPlace = value;
+                if (_sharedDataService.SelectedDestinationPlace == value) return;
+                _sharedDataService.SelectedDestinationPlace = value;
                 OnPropertyChanged();
-                if (_selectedDestinationPlace == SelectedStartPlace)
+                if (_sharedDataService.SelectedDestinationPlace == SelectedStartPlace)
                     SelectedStartPlace = null;
                 OnPropertyChanged(nameof(CanSearch));
             }
@@ -71,20 +67,20 @@ namespace DalilBus.MVVM.ViewModels
 
         public DateTime SelectedDate
         {
-            get => _selectedDate;
+            get => _sharedDataService.SelectedDate;
             set 
             {
-                _selectedDate = value;
+                _sharedDataService.SelectedDate = value;
                 OnPropertyChanged();
             }
         }
 
         public TimeSpan SelectedTime
         {
-            get => _selectedTime;
+            get => _sharedDataService.SelectedTime;
             set
             {
-                _selectedTime = value;
+                _sharedDataService.SelectedTime = value;
                 OnPropertyChanged();
             }
         }
@@ -116,14 +112,6 @@ namespace DalilBus.MVVM.ViewModels
         public async Task LoadTravelsAsync()
         {
             await _sharedDataService.LoadTravelsAsync();
-        }
-
-        public void InitializeSharedDataService()
-        {
-            _sharedDataService.SelectedStartPlace = SelectedStartPlace;
-            _sharedDataService.SelectedDestinationPlace = SelectedDestinationPlace;
-            _sharedDataService.SelectedDate = SelectedDate;
-            _sharedDataService.SelectedTime = SelectedTime;
         }
 
         public void SwapPoints()

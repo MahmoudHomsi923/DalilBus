@@ -23,8 +23,23 @@ public static class MauiProgram
                 fonts.AddFont("Free-Regular-400.otf", "FAR");
                 fonts.AddFont("Free-Solid-900.otf", "FAS");
             });
+
+        // Remove underline for DatePicker and TimePicker on Android
+        Microsoft.Maui.Handlers.DatePickerHandler.Mapper.AppendToMapping("NoUnderline", (handler, view) =>
+        {
+#if ANDROID
+        handler.PlatformView.Background = null;
+#endif
+        });
+        Microsoft.Maui.Handlers.TimePickerHandler.Mapper.AppendToMapping("NoUnderline", (handler, view) =>
+        {
+#if ANDROID
+        handler.PlatformView.Background = null;
+#endif
+        });
+
         // Pages register
-		builder.Services.AddTransient<MainPage>();
+        builder.Services.AddTransient<MainPage>();
 		builder.Services.AddTransient<AboutPage>();
 		builder.Services.AddTransient<TravelsPage>();
         // ViewModels register

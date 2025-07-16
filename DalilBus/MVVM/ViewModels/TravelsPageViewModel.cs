@@ -12,34 +12,29 @@ namespace DalilBus.MVVM.ViewModels
 
         private readonly SharedDataService _sharedDataService;
 
-        private Place? _selectedStartPlace;
-        private Place? _selectedDestinationPlace;
-        private DateTime _selectedDate;
-        private TimeSpan _selectedTime;
-
         private const string RightArrowEmoji = " ➡️ "; // U+27A1 + U+FE0F
         private const string LeftArrowEmoji = " ⬅️ "; // U+2B05 + U+FE0F
 
-        public Place? SelectedStartPlace => _selectedStartPlace;
+        public Place? SelectedStartPlace => _sharedDataService.SelectedStartPlace;
 
-        public Place? SelectedDestinationPlace => _selectedDestinationPlace;
+        public Place? SelectedDestinationPlace => _sharedDataService.SelectedDestinationPlace;
 
         public DateTime SelectedDate
         {
-            get => _selectedDate;
+            get => _sharedDataService.SelectedDate;
             set
             {
-                _selectedDate = value;
+                _sharedDataService.SelectedDate = value;
                 OnPropertyChanged();
             }
         }
 
         public TimeSpan SelectedTime
         {
-            get => _selectedTime;
+            get => _sharedDataService.SelectedTime;
             set
             {
-                _selectedTime = value;
+                _sharedDataService.SelectedTime = value;
                 OnPropertyChanged();
             }
         }
@@ -50,10 +45,6 @@ namespace DalilBus.MVVM.ViewModels
         public TravelsPageViewModel(SharedDataService sharedDataService)
         {
             _sharedDataService = sharedDataService;
-            _selectedStartPlace = _sharedDataService.SelectedStartPlace;
-            _selectedDestinationPlace = _sharedDataService.SelectedDestinationPlace;
-            _selectedDate = _sharedDataService.SelectedDate;
-            _selectedTime = _sharedDataService.SelectedTime;
         }
 
         public void OnPropertyChanged([CallerMemberName] string? propertyName = null)

@@ -3,6 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DalilBus.MVVM.Views.TravelsPage"
              Title="Travels الرحلات">
+
+    <ContentPage.Resources>
+        <x:String x:Key="calendar">&#xf073;</x:String>
+        <x:String x:Key="uhr">&#xf017;</x:String>
+    </ContentPage.Resources>
+
     <VerticalStackLayout>
 
         <Label 
@@ -14,14 +20,38 @@
             BackgroundColor="{StaticResource Primary}"
             FontSize="16" />
 
-        <DatePicker x:Name="datePicker"  
-    Format="dd/MM/yyyy"
-    Date="{Binding SelectedDate}"  
-    HeightRequest="40"
-    FontSize="16"
-    HorizontalOptions="Center"
-    WidthRequest="260"
-    BackgroundColor="{StaticResource Primary}" />
+        <Grid ColumnDefinitions="*,*"
+              HeightRequest="40"
+              BackgroundColor="#E6BE00">
+            <!-- DatePicker with calendar icon -->
+            <HorizontalStackLayout Grid.Column="0" Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="{StaticResource calendar}"
+               FontFamily="FAS"
+               FontSize="20"
+               VerticalOptions="Center"
+               HorizontalOptions="Start"/>
+                <DatePicker x:Name="datePicker"
+                    Format="dd/MM/yyyy"
+                    Date="{Binding SelectedDate}"
+                    FontSize="16"
+                    BackgroundColor="#E6BE00"
+                    HorizontalOptions="Center" />
+            </HorizontalStackLayout>
+
+            <!-- TimePicker with clock icon -->
+            <HorizontalStackLayout Grid.Column="1" Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="{StaticResource uhr}"
+               FontFamily="FAS"
+               FontSize="20"
+               VerticalOptions="Center"
+               HorizontalOptions="Start"/>
+                <TimePicker x:Name="timePicker"
+                    Time="{Binding SelectedTime}"
+                    FontSize="16"
+                    BackgroundColor="#E6BE00"
+                    HorizontalOptions="Center" />
+            </HorizontalStackLayout>
+        </Grid>
 
     </VerticalStackLayout>
 </ContentPage>
