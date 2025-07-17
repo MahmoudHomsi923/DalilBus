@@ -1,6 +1,7 @@
 ﻿using DalilBus.MVVM.Models;
 using DalilBus.MVVM.ViewModels;
 using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace DalilBus.MVVM.Views;
 
@@ -22,6 +23,8 @@ public partial class TravelsPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
+
+        lblDirection.Text = CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "ar" ? (string)Resources["leftlong"] : (string)Resources["rightlong"];
     }
 
 }

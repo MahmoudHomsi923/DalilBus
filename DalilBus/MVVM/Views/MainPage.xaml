@@ -22,41 +22,28 @@
 
             <VerticalStackLayout  
                 Padding="25.0"  
-                Spacing="25">  
+                Spacing="25">
 
-                <Grid Margin="0,1,0,0" RowDefinitions=".08*,.1*,.5*,.1*,.3*">  
-                    <Label Text="From من"  
+                    <Grid Margin="0,-10,0,0" RowDefinitions=".08*,.1*,.5*,.1*,.3*">
+                        <Label Text="From من"  
                            HorizontalOptions="Fill"  
-                           TextColor="Gray"/>  
-                    <Border Grid.Row="1" Padding="10.0" Stroke="Gray" StrokeThickness="1">  
-                        <Border.StrokeShape>  
-                            <RoundRectangle CornerRadius="3" />  
-                        </Border.StrokeShape>  
-                        <Picker x:Name="pickerFrom"  
+                           TextColor="Gray"/>
+                        <Border Grid.Row="1" Padding="10.0" Stroke="Gray" StrokeThickness="1">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="3" />
+                            </Border.StrokeShape>
+                            <Picker x:Name="pickerFrom"  
                                 Title="Select اختيار"    
                                 ItemsSource="{Binding PlacesList}"  
                                 SelectedItem="{Binding SelectedStartPlace}"  
                                 ItemDisplayBinding="{Binding Name}"  
                                 HeightRequest="400"  
                                 HorizontalOptions="Fill"  
-                                TitleColor="Gray"/>  
-                    </Border>
-                </Grid>
+                                TitleColor="Gray"/>
+                        </Border>
+                    </Grid>
 
-                <Grid Margin="15,-20,15,-20" RowDefinitions="Auto,Auto,Auto">  
-                    <Frame HeightRequest="50" WidthRequest="50" CornerRadius="25" BackgroundColor="Gold" BorderColor="Transparent" HasShadow="False" Padding="0">  
-                        <ImageButton x:Name="btnExchange" BackgroundColor="Transparent" Padding="10" Clicked="OnBtnExchangeClicked">  
-                            <ImageButton.Source>  
-                                <FontImageSource Glyph="{StaticResource exchange}"  
-                                                 FontFamily="FAS"  
-                                                 Size="30"  
-                                                 Color="White"/>  
-                            </ImageButton.Source>  
-                        </ImageButton>  
-                    </Frame>  
-                </Grid>  
-
-                <Grid Margin="0,-20,0,1" RowDefinitions=".08*,.1*,.5*,.1*,.3*">  
+                    <Grid Margin="0,-20,0,0" RowDefinitions=".08*,.1*,.5*,.1*,.3*">  
                     <Label Text="To إلى"  
                            HorizontalOptions="Fill"  
                            TextColor="Gray"/>  
@@ -73,9 +60,23 @@
                                 HorizontalOptions="Fill"  
                                 TitleColor="Gray" />  
                     </Border>  
-                </Grid>  
+                </Grid>
 
-                <Grid Margin="0,1,0,1" RowDefinitions=".08*,.1*,.5*,.1*,.3*">  
+                    <Grid Margin="15,-105,5,0" RowDefinitions="Auto,Auto,Auto" HorizontalOptions="End" VerticalOptions="Center">
+                        <Frame HeightRequest="50" WidthRequest="50" CornerRadius="25" BackgroundColor="Gold" 
+                               BorderColor="Transparent" HasShadow="False" Padding="0" Rotation="90">
+                            <ImageButton x:Name="btnExchange" BackgroundColor="Transparent" Padding="10" Clicked="OnBtnExchangeClicked">
+                                <ImageButton.Source>
+                                    <FontImageSource Glyph="{StaticResource exchange}"  
+                                 FontFamily="FAS"  
+                                 Size="30"  
+                                 Color="White"/>
+                                </ImageButton.Source>
+                            </ImageButton>
+                        </Frame>
+                    </Grid>
+
+                    <Grid Margin="0,10,0,0" RowDefinitions=".08*,.1*,.5*,.1*,.3*">  
                     <Label Text="Date التاريخ"  
                            HorizontalOptions="Fill"  
                            TextColor="Gray"/>  
@@ -91,7 +92,7 @@
                     </Border>  
                 </Grid>  
 
-                <Grid Margin="0,1,0,1" RowDefinitions=".08*,.1*,.5*,.1*,.3*">  
+                <Grid Margin="0,-20,0,1" RowDefinitions=".08*,.1*,.5*,.1*,.3*">  
                     <Label Text="Time الوقت"  
                            HorizontalOptions="Fill"  
                            TextColor="Gray"/>  
@@ -106,7 +107,7 @@
                     </Border>  
                 </Grid>
 
-                <Grid Margin="0,20,0,10">  
+                <Grid Margin="0,0,0,10">  
                     <Button Text="Search بحث"  
                             FontAttributes="Bold"  
                             FontSize="24"  

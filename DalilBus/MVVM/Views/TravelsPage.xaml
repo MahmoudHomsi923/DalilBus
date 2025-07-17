@@ -28,7 +28,6 @@
             <HorizontalStackLayout Grid.Column="1" Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
                 <Label
                     x:Name="lblDirection"
-                    Text="{StaticResource direction}"
                     FontFamily="FAS"
                     FontSize="20"
                     VerticalOptions="Center"
@@ -41,7 +40,7 @@
                     Text="{Binding SelectedDestinationPlace.Name}"
                     FontSize="16"
                     VerticalOptions="Center"
-                    HorizontalOptions="Start"/>
+                    HorizontalOptions="Center"/>
             </HorizontalStackLayout>
         </Grid>
 

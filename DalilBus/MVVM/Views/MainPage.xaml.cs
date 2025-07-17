@@ -47,7 +47,7 @@ namespace DalilBus
         private async void OnBtnExchangeClicked(object sender, EventArgs e)
         {
             // Perform a 500ms rotation animation
-            await btnExchange.RotateTo(180, 500);
+            await btnExchange.RotateTo(180, 300);
             // Reset the rotation to its original state
             btnExchange.Rotation = 0;
 
