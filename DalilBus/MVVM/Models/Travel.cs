@@ -18,16 +18,16 @@ namespace DalilBus.MVVM.Models
         public int DestinationPlaceID { get; set; }
 
         [JsonPropertyName("depatureDate")]
-        public int DepatureDate { get; set; }
+        public DateTime DepatureDate { get; set; }
 
         [JsonPropertyName("arrivalDate")]
-        public int ArrivalDate { get; set; }
+        public DateTime ArrivalDate { get; set; }
 
         [JsonPropertyName("depatureTime")]
-        public int DepatureTime { get; set; }
+        public TimeSpan DepatureTime { get; set; }
 
         [JsonPropertyName("arrivalTime")]
-        public int ArrivalTime { get; set; }
+        public TimeSpan ArrivalTime { get; set; }
 
         [JsonPropertyName("companyID")]
         public int CompanyID { get; set; }

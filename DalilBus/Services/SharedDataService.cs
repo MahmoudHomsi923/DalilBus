@@ -116,7 +116,9 @@ namespace DalilBus.Services
 
         public async Task LoadTravelsAsync()
         {
-            TravelsList = await ApiClient.GetFromSubabaseAsync<List<Travel>>(ApiConfig.TravelsEndpoint) ?? new List<Travel>();
+            string filter = $"&startPlaceID=eq.{SelectedStartPlace?.Id}&destinationPlaceID=eq.{SelectedDestinationPlace?.Id}&depatureDate=gte.{selectedDate.ToString("yyyy-MM-dd")}&depatureTime=gte.{selectedTime.ToString(@"hh\:mm\:ss")}";
+            string orderBy = "&order=depatureDate.asc,depatureTime.asc";
+            TravelsList = await ApiClient.GetFromSubabaseAsync<List<Travel>>(ApiConfig.TravelsEndpoint+filter) ?? new List<Travel>();
         }
 
         protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)

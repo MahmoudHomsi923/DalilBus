@@ -10,74 +10,130 @@
         <x:String x:Key="edit">&#xf044;</x:String>
     </ContentPage.Resources>
 
-    <VerticalStackLayout>
-
-        <Grid ColumnDefinitions="*,Auto,*"
-              HeightRequest="40"
-              BackgroundColor="{StaticResource Primary}">
+    <Grid VerticalOptions="Fill" HorizontalOptions="Fill">
+        
+        <VerticalStackLayout>
             
-            <HorizontalStackLayout Grid.Column="0" Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
-                <Label
-                    x:Name="lblSelectedStartPlace"
-                    Text="{Binding SelectedStartPlace.Name}"
-                    FontSize="16"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"/>
-            </HorizontalStackLayout>
+            <Grid 
+                ColumnDefinitions="*,Auto,*"
+                HeightRequest="40"
+                BackgroundColor="{StaticResource Primary}">
+            
+                <HorizontalStackLayout 
+                    Grid.Column="0" 
+                    Spacing="5" 
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center">
+                    <Label
+                        x:Name="lblSelectedStartPlace"
+                        Text="{Binding SelectedStartPlace.Name}"
+                        FontSize="16"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"/>
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout Grid.Column="1" Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
-                <Label
-                    x:Name="lblDirection"
-                    FontFamily="FAS"
-                    FontSize="20"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"/>
-            </HorizontalStackLayout>
+                <HorizontalStackLayout 
+                    Grid.Column="1" 
+                    Spacing="5" 
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center">
+                    <Label
+                        x:Name="lblDirection"
+                        FontFamily="FAS"
+                        FontSize="20"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"/>
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout Grid.Column="2" Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
-                <Label
-                    x:Name="lblSelectedDestinationPlace"
-                    Text="{Binding SelectedDestinationPlace.Name}"
-                    FontSize="16"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"/>
-            </HorizontalStackLayout>
+                <HorizontalStackLayout 
+                    Grid.Column="2" 
+                    Spacing="5" 
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center">
+                    <Label
+                        x:Name="lblSelectedDestinationPlace"
+                        Text="{Binding SelectedDestinationPlace.Name}"
+                        FontSize="16"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"/>
+                </HorizontalStackLayout>
+                
+            </Grid>
+
+            <Grid 
+                ColumnDefinitions="*,*"
+                HeightRequest="40"
+                BackgroundColor="#E6BE00">
+                <!-- DatePicker with calendar icon -->
+                <HorizontalStackLayout 
+                    Grid.Column="0" 
+                    Spacing="5" 
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center">
+                    <Label 
+                        Text="{StaticResource edit}"
+                        FontFamily="FAS"
+                        FontSize="16"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"/>
+                    <DatePicker 
+                        x:Name="datePicker"
+                        Format="dd/MM/yyyy"
+                        Date="{Binding SelectedDate}"
+                        FontSize="16"
+                        BackgroundColor="#E6BE00"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+
+                <!-- TimePicker with clock icon -->
+                <HorizontalStackLayout 
+                    Grid.Column="1" 
+                    Spacing="5" 
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center">
+                    <Label 
+                        Text="{StaticResource edit}"
+                        FontFamily="FAS"
+                        FontSize="16"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Start"/>
+                    <TimePicker 
+                        x:Name="timePicker"
+                        Time="{Binding SelectedTime}"
+                        FontSize="16"
+                        BackgroundColor="#E6BE00"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+            </Grid>
+
+        </VerticalStackLayout>
+
+        <ScrollView>
+             
+     
+            
+        </ScrollView>
+        
+        <Grid 
+            BackgroundColor="#80000000"
+            IsVisible="{Binding IsLoading}"
+            InputTransparent="False"
+            VerticalOptions="Fill"
+            HorizontalOptions="Fill"
+            ZIndex="999">
+            <ActivityIndicator  
+                IsVisible="True"
+                IsRunning="True"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Color="Gold"
+                WidthRequest="100"
+                HeightRequest="100"
+                ZIndex="999" />
         </Grid>
-
-        <Grid ColumnDefinitions="*,*"
-              HeightRequest="40"
-              BackgroundColor="#E6BE00">
-            <!-- DatePicker with calendar icon -->
-            <HorizontalStackLayout Grid.Column="0" Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
-                <Label Text="{StaticResource edit}"
-                       FontFamily="FAS"
-                       FontSize="16"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center"/>
-                <DatePicker x:Name="datePicker"
-                            Format="dd/MM/yyyy"
-                            Date="{Binding SelectedDate}"
-                            FontSize="16"
-                            BackgroundColor="#E6BE00"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"/>
-            </HorizontalStackLayout>
-
-            <!-- TimePicker with clock icon -->
-            <HorizontalStackLayout Grid.Column="1" Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
-                <Label Text="{StaticResource edit}"
-                       FontFamily="FAS"
-                       FontSize="16"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Start"/>
-                <TimePicker x:Name="timePicker"
-                            Time="{Binding SelectedTime}"
-                            FontSize="16"
-                            BackgroundColor="#E6BE00"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"/>
-            </HorizontalStackLayout>
-        </Grid>
-
-    </VerticalStackLayout>
+        
+    </Grid>
+    
 </ContentPage>

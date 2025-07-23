@@ -6,7 +6,7 @@ namespace DalilBus
 {
     public partial class MainPage : ContentPage
     {
-        private readonly MainPageViewModel _mainPageViewModel;
+        private readonly MainPageViewModel vm;
 
         public MainPage(MainPageViewModel mainPageViewModel )
         {
@@ -14,9 +14,9 @@ namespace DalilBus
             // Set the title of the page
             Title = "Search بحث";
             // Intialize MainPageViewModel 
-            _mainPageViewModel = mainPageViewModel ?? throw new ArgumentNullException(nameof(mainPageViewModel), "MainPageViewModel cannot be null");
+            vm = mainPageViewModel ?? throw new ArgumentNullException(nameof(mainPageViewModel), "MainPageViewModel cannot be null");
             // Set the BindingContext to the MainPageViewModel instance
-            BindingContext = _mainPageViewModel;
+            BindingContext = vm;
         }
 
         protected override async void OnAppearing()
@@ -36,11 +36,11 @@ namespace DalilBus
             }
 
 
-            if (_mainPageViewModel != null)
+            if (vm != null)
             {
-                _mainPageViewModel.IsLoading = true;
-                await _mainPageViewModel.InitializeOrReferechUiElements();
-                _mainPageViewModel.IsLoading = false;
+                vm.IsLoading = true;
+                await vm.InitializeOrReferechDataAsync();
+                vm.IsLoading = false;
             }
         }
 
@@ -52,7 +52,7 @@ namespace DalilBus
             btnExchange.Rotation = 0;
 
             // Swap the start and destination points in the ViewModel
-            _mainPageViewModel.SwapPoints();
+            vm.SwapPoints();
         }
 
         private async void OnBtnSearchClicked(object sender, EventArgs e)
@@ -65,7 +65,7 @@ namespace DalilBus
                 return; // Exit the method if no connection is available
             }
 
-            if (_mainPageViewModel != null)
+            if (vm != null)
             {
                 // Navigate to the TravelsPage with parameters
                 await Shell.Current.GoToAsync("TravelsPage");

@@ -1,7 +1,7 @@
 ﻿using DalilBus.MVVM.Models;
 using DalilBus.Services;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Globalization;
 using System.Runtime.CompilerServices;
 
 namespace DalilBus.MVVM.ViewModels
@@ -12,8 +12,29 @@ namespace DalilBus.MVVM.ViewModels
 
         private readonly SharedDataService _sharedDataService;
 
-        private const string RightArrowEmoji = " ➡️ "; // U+27A1 + U+FE0F
-        private const string LeftArrowEmoji = " ⬅️ "; // U+2B05 + U+FE0F
+        private bool isLoading = false;
+
+        private ObservableCollection<Travel>? travelsList;
+
+        public bool IsLoading
+        {
+            get => isLoading;
+            set
+            {
+                isLoading = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<Travel>? TravelsList
+        {
+            get => travelsList;
+            set
+            {
+                travelsList = value;
+                OnPropertyChanged();
+            }
+        }
 
         public Place? SelectedStartPlace => _sharedDataService.SelectedStartPlace;
 
@@ -39,8 +60,11 @@ namespace DalilBus.MVVM.ViewModels
             }
         }
 
-        public string GetArrowEmoji() =>
-            CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "ar" ? LeftArrowEmoji : RightArrowEmoji;
+        public async Task IntializeDataAsync()
+        {
+            await _sharedDataService.LoadTravelsAsync();
+            TravelsList = new ObservableCollection<Travel>(_sharedDataService.TravelsList);
+        }
 
         public TravelsPageViewModel(SharedDataService sharedDataService)
         {

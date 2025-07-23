@@ -92,7 +92,7 @@ namespace DalilBus.MVVM.ViewModels
             _sharedDataService = sharedDataService;
         }
 
-        public async Task InitializeOrReferechUiElements()
+        public async Task InitializeOrReferechDataAsync()
         {
             if (PlacesList == null)
             {
