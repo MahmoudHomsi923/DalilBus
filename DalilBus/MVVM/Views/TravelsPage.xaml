@@ -108,13 +108,42 @@
                 </HorizontalStackLayout>
             </Grid>
 
+
+            <ScrollView>
+
+                <CollectionView
+                    ItemsSource="{Binding TravelsList}"
+                    Margin="0,5,0,5"
+                    SelectionMode="None"
+                    HorizontalOptions="Center">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                Margin="5"
+                                Padding="50"
+                                CornerRadius="5"
+                                HorizontalOptions="Fill">
+
+                                <VerticalStackLayout>
+                                    <Label
+                                        Text="{Binding StartPlace.Name}"
+                                        FontSize="18"
+                                        FontAttributes="Bold"
+                                        HorizontalOptions="Start" />
+                                </VerticalStackLayout>
+
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+
+            </ScrollView>
         </VerticalStackLayout>
 
-        <ScrollView>
-             
-     
-            
-        </ScrollView>
+        
         
         <Grid 
             BackgroundColor="#80000000"
