@@ -12,6 +12,15 @@ namespace DalilBus.MVVM.Models
         [JsonPropertyName("id")]
         public int Id { get; set; }
 
+        [JsonPropertyName("number")]
+        public int Number { get; set; }
+
+        [JsonPropertyName("nameAr")]
+        public string NameAr { get; set; }
+
+        [JsonPropertyName("nameEn")]
+        public string NameEn { get; set; }
+
         [JsonPropertyName("startPlaceID")]
         public int StartPlaceID { get; set; }
 
@@ -30,11 +39,8 @@ namespace DalilBus.MVVM.Models
         [JsonPropertyName("arrivalTime")]
         public TimeSpan ArrivalTime { get; set; }
 
-        [JsonPropertyName("companyID")]
-        public int CompanyID { get; set; }
-
-        [JsonPropertyName("changes")]
-        public int Changes { get; set; }
+        [JsonPropertyName("stops")]
+        public int Stops { get; set; }
 
         public string DepatureTimeDisplay => DateTime.Today.Add(DepatureTime).ToString("h:mm tt");
 
@@ -59,9 +65,9 @@ namespace DalilBus.MVVM.Models
             }
         }
 
-        public string ChangesDisplay => Changes == 0 
+        public string StopsDisplay => Stops == 0 
             ? StringHelper.GetLocalizedString("مباشر", "Direct") 
-            : StringHelper.GetLocalizedString($"{Changes} تبديل/تبديلات", $"{Changes} change(s)");
+            : StringHelper.GetLocalizedString($"{Stops} تبديل/تبديلات", $"{Stops} change(s)");
     
     }
 }

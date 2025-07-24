@@ -17,6 +17,6 @@ namespace DalilBus.Config
         public const string CompaniesEndpoint = "companies?select=id,nameEn,nameAr";
 
         // Endpoint for fetching travels
-        public const string TravelsEndpoint = "travels?select=id,startPlaceID,destinationPlaceID,depatureDate,arrivalDate,depatureTime,arrivalTime,companyID,changes";
+        public const string TravelsEndpoint = "vwtravels?select=id,number,nameAr,nameEn,startPlaceID,destinationPlaceID,depatureDate,arrivalDate,depatureTime,arrivalTime,stops";
     }
 }
