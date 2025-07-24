@@ -33,6 +33,9 @@ namespace DalilBus.MVVM.Models
         [JsonPropertyName("companyID")]
         public int CompanyID { get; set; }
 
+        [JsonPropertyName("changes")]
+        public int Changes { get; set; }
+
         public string DepatureTimeDisplay => DateTime.Today.Add(DepatureTime).ToString("h:mm tt");
 
         public string ArrivalTimeDisplay => DateTime.Today.Add(ArrivalTime).ToString("h:mm tt");
@@ -55,6 +58,10 @@ namespace DalilBus.MVVM.Models
                 return $"{(int)duration.TotalHours}:{duration.Minutes:D2} " + StringHelper.GetLocalizedString("س", "hrs");
             }
         }
+
+        public string ChangesDisplay => Changes == 0 
+            ? StringHelper.GetLocalizedString("مباشر", "Direct") 
+            : StringHelper.GetLocalizedString($"{Changes} تبديل/تبديلات", $"{Changes} change(s)");
     
     }
 }

@@ -153,17 +153,6 @@
                                             FontAttributes="Bold"
                                             HorizontalOptions="Start" />
                                         <Label
-                                            Text="{Binding DurationDisplay}"
-                                            FontSize="13"
-                                            TextColor="Green"
-                                            FontAttributes="Bold"
-                                            HorizontalOptions="Start" />
-                                        <Label
-                                            Text=" ─ "
-                                            FontSize="15"
-                                            FontAttributes="Bold"
-                                            HorizontalOptions="Start" />
-                                        <Label
                                             Text="{Binding ArrivalTimeDisplay}"
                                             Margin="0,0,15,0"
                                             FontSize="15"
@@ -192,6 +181,17 @@
                                             HorizontalOptions="Start"/>
                                         <Label
                                             Text="{Binding DurationDisplay}"
+                                            Margin="0,0,15,0"
+                                            FontSize="15"
+                                            FontAttributes="Bold"
+                                            HorizontalOptions="Start" />
+                                        <Label
+                                            Text=" | "
+                                            FontSize="15"
+                                            FontAttributes="Bold"
+                                            HorizontalOptions="Start" />
+                                        <Label
+                                            Text="{Binding ChangesDisplay}"
                                             FontSize="15"
                                             FontAttributes="Bold"
                                             HorizontalOptions="Start" />
