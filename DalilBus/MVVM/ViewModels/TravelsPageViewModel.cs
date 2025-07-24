@@ -66,6 +66,12 @@ namespace DalilBus.MVVM.ViewModels
             TravelsList = new ObservableCollection<Travel>(_sharedDataService.TravelsList);
         }
 
+        public string GetCompanyNamebyID(int companyId)
+        {
+            var company = _sharedDataService.CompaniesList.FirstOrDefault(c => c.Id == companyId);
+            return company?.Name ?? "Unknown Company";
+        }
+
         public TravelsPageViewModel(SharedDataService sharedDataService)
         {
             _sharedDataService = sharedDataService;
