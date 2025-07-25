@@ -14,216 +14,216 @@
     </ContentPage.Resources>
 
     <Grid VerticalOptions="Fill" HorizontalOptions="Fill">
-        
-        <VerticalStackLayout>
-            
-            <Grid 
-                ColumnDefinitions="*,Auto,*"
-                HeightRequest="40"
-                BackgroundColor="{StaticResource Primary}">
-            
-                <HorizontalStackLayout 
-                    Grid.Column="0" 
-                    Spacing="5" 
-                    HorizontalOptions="Center" 
-                    VerticalOptions="Center">
-                    <Label
-                        x:Name="lblSelectedStartPlace"
-                        Text="{Binding SelectedStartPlace.Name}"
-                        FontSize="16"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"/>
-                </HorizontalStackLayout>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-                <HorizontalStackLayout 
-                    Grid.Column="1" 
-                    Spacing="5" 
-                    HorizontalOptions="Center" 
-                    VerticalOptions="Center">
-                    <Label
-                        x:Name="lblDirection"
-                        FontFamily="FAS"
-                        FontSize="20"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"/>
-                </HorizontalStackLayout>
+        <!-- Header: Start/Ziel -->
+        <Grid 
+            Grid.Row="0"
+            ColumnDefinitions="*,Auto,*"
+            HeightRequest="40"
+            BackgroundColor="{StaticResource Primary}">
+            <HorizontalStackLayout 
+                Grid.Column="0" 
+                Spacing="5" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center">
+                <Label
+                    x:Name="lblSelectedStartPlace"
+                    Text="{Binding SelectedStartPlace.Name}"
+                    FontSize="16"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout 
+                Grid.Column="1" 
+                Spacing="5" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center">
+                <Label
+                    x:Name="lblDirection"
+                    FontFamily="FAS"
+                    FontSize="20"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout 
+                Grid.Column="2" 
+                Spacing="5" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center">
+                <Label
+                    x:Name="lblSelectedDestinationPlace"
+                    Text="{Binding SelectedDestinationPlace.Name}"
+                    FontSize="16"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+            </HorizontalStackLayout>
+        </Grid>
 
-                <HorizontalStackLayout 
-                    Grid.Column="2" 
-                    Spacing="5" 
-                    HorizontalOptions="Center" 
-                    VerticalOptions="Center">
-                    <Label
-                        x:Name="lblSelectedDestinationPlace"
-                        Text="{Binding SelectedDestinationPlace.Name}"
-                        FontSize="16"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"/>
-                </HorizontalStackLayout>
-                
-            </Grid>
+        <!-- Picker -->
+        <Grid 
+            Grid.Row="1"
+            ColumnDefinitions="*,*"
+            HeightRequest="40"
+            BackgroundColor="#E6BE00">
+            <HorizontalStackLayout 
+                Grid.Column="0" 
+                Spacing="5" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center">
+                <Label 
+                    Text="{StaticResource edit}"
+                    FontFamily="FAS"
+                    FontSize="16"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+                <DatePicker 
+                    x:Name="datePicker"
+                    Format="dd/MM/yyyy"
+                    Date="{Binding SelectedDate}"
+                    PropertyChanged="OnDatePickerDateSelected"
+                    FontSize="16"
+                    BackgroundColor="#E6BE00"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout 
+                Grid.Column="1" 
+                Spacing="5" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center">
+                <Label 
+                    Text="{StaticResource edit}"
+                    FontFamily="FAS"
+                    FontSize="16"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start"/>
+                <TimePicker 
+                    x:Name="timePicker"
+                    Time="{Binding SelectedTime}"
+                    PropertyChanged="OnTimePickerTimeSelected"
+                    FontSize="16"
+                    BackgroundColor="#E6BE00"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+        </Grid>
 
-            <Grid 
-                ColumnDefinitions="*,*"
-                HeightRequest="40"
-                BackgroundColor="#E6BE00">
-                <!-- DatePicker with calendar icon -->
-                <HorizontalStackLayout 
-                    Grid.Column="0" 
-                    Spacing="5" 
-                    HorizontalOptions="Center" 
-                    VerticalOptions="Center">
-                    <Label 
-                        Text="{StaticResource edit}"
-                        FontFamily="FAS"
-                        FontSize="16"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"/>
-                    <DatePicker 
-                        x:Name="datePicker"
-                        Format="dd/MM/yyyy"
-                        Date="{Binding SelectedDate}"
-                        FontSize="16"
-                        BackgroundColor="#E6BE00"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"/>
-                </HorizontalStackLayout>
+        <!-- CollectionView: Scrollbar funktioniert jetzt -->
+        <CollectionView
+            Grid.Row="2"
+            ItemsSource="{Binding TravelsList}"
+            Margin="0,5,0,5"
+            SelectionMode="None"
+            HorizontalOptions="Center"
+            VerticalOptions="FillAndExpand">
 
-                <!-- TimePicker with clock icon -->
-                <HorizontalStackLayout 
-                    Grid.Column="1" 
-                    Spacing="5" 
-                    HorizontalOptions="Center" 
-                    VerticalOptions="Center">
-                    <Label 
-                        Text="{StaticResource edit}"
-                        FontFamily="FAS"
-                        FontSize="16"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Start"/>
-                    <TimePicker 
-                        x:Name="timePicker"
-                        Time="{Binding SelectedTime}"
-                        FontSize="16"
-                        BackgroundColor="#E6BE00"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"/>
-                </HorizontalStackLayout>
-            </Grid>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        Margin="5"
+                        Padding="5"
+                        CornerRadius="5"
+                        HorizontalOptions="Fill">
 
+                        <VerticalStackLayout>
+                            <HorizontalStackLayout
+                                Grid.Column="0"
+                                Spacing="5"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Start">
+                                <Label 
+                                    Text="{StaticResource clock}"
+                                    Margin="0,0,15,0"
+                                    FontFamily="FAS"
+                                    FontSize="16"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Start"/>
+                                <Label
+                                    Text="{Binding DepatureTimeDisplay}"
+                                    FontSize="15"
+                                    FontAttributes="Bold"
+                                    HorizontalOptions="Start" />
+                                <Label
+                                    Text=" ─ "
+                                    FontSize="15"
+                                    FontAttributes="Bold"
+                                    HorizontalOptions="Start" />
+                                <Label
+                                    Text="{Binding ArrivalTimeDisplay}"
+                                    Margin="0,0,15,0"
+                                    FontSize="15"
+                                    FontAttributes="Bold"
+                                    HorizontalOptions="Start" />
+                                <Label
+                                    Text="{Binding TimeNote}"
+                                    FontSize="13"
+                                    TextColor="Green"
+                                    FontAttributes="Bold"
+                                    HorizontalOptions="Start" />
+                            </HorizontalStackLayout>
 
-            <ScrollView>
+                            <HorizontalStackLayout
+                                Grid.Column="1"
+                                Spacing="5"
+                                Margin="0,10,0,0"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Start">
+                                <Label 
+                                    Text="{StaticResource info}"
+                                    Margin="0,0,15,0"
+                                    FontFamily="FAS"
+                                    FontSize="16"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Start"/>
+                                <Label
+                                    Text="{Binding DurationDisplay}"
+                                    Margin="0,0,15,0"
+                                    FontSize="15"
+                                    FontAttributes="Bold"
+                                    HorizontalOptions="Start" />
+                                <Label
+                                    Text=" | "
+                                    FontSize="15"
+                                    FontAttributes="Bold"
+                                    HorizontalOptions="Start" />
+                                <Label
+                                    Text="{Binding StopsDisplay}"
+                                    FontSize="15"
+                                    FontAttributes="Bold"
+                                    HorizontalOptions="Start" />
+                            </HorizontalStackLayout>
 
-                <CollectionView
-                    ItemsSource="{Binding TravelsList}"
-                    Margin="0,5,0,5"
-                    SelectionMode="None"
-                    HorizontalOptions="Center">
+                            <HorizontalStackLayout
+                                Grid.Column="2"
+                                Spacing="5"
+                                Margin="0,10,0,0"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Start">
+                                <Label 
+                                    Text="{StaticResource bus}"
+                                    Margin="0,0,15,0"
+                                    FontFamily="FAS"
+                                    FontSize="16"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Start"/>
+                                <Label
+                                    Text="{Binding NameDisplay}"
+                                    FontSize="15"
+                                    FontAttributes="Bold"
+                                    HorizontalOptions="Start" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame
-                                Margin="5"
-                                Padding="5"
-                                CornerRadius="5"
-                                HorizontalOptions="Fill">
-
-                                <VerticalStackLayout>
-                                    
-                                    <HorizontalStackLayout
-                                        Grid.Column="0"
-                                        Spacing="5"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Start">
-                                        <Label 
-                                            Text="{StaticResource clock}"
-                                            Margin="0,0,15,0"
-                                            FontFamily="FAS"
-                                            FontSize="16"
-                                            VerticalOptions="Center"
-                                            HorizontalOptions="Start"/>
-                                        <Label
-                                            Text="{Binding DepatureTimeDisplay}"
-                                            FontSize="15"
-                                            FontAttributes="Bold"
-                                            HorizontalOptions="Start" />
-                                        <Label
-                                            Text=" ─ "
-                                            FontSize="15"
-                                            FontAttributes="Bold"
-                                            HorizontalOptions="Start" />
-                                        <Label
-                                            Text="{Binding ArrivalTimeDisplay}"
-                                            Margin="0,0,15,0"
-                                            FontSize="15"
-                                            FontAttributes="Bold"
-                                            HorizontalOptions="Start" />
-                                        <Label
-                                            Text="{Binding TimeNote}"
-                                            FontSize="13"
-                                            TextColor="Green"
-                                            FontAttributes="Bold"
-                                            HorizontalOptions="Start" />
-                                    </HorizontalStackLayout>
-
-                                    <HorizontalStackLayout
-                                        Grid.Column="1"
-                                        Spacing="5"
-                                        Margin="0,10,0,0"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Start">
-                                        <Label 
-                                            Text="{StaticResource info}"
-                                            Margin="0,0,15,0"
-                                            FontFamily="FAS"
-                                            FontSize="16"
-                                            VerticalOptions="Center"
-                                            HorizontalOptions="Start"/>
-                                        <Label
-                                            Text="{Binding DurationDisplay}"
-                                            Margin="0,0,15,0"
-                                            FontSize="15"
-                                            FontAttributes="Bold"
-                                            HorizontalOptions="Start" />
-                                        <Label
-                                            Text=" | "
-                                            FontSize="15"
-                                            FontAttributes="Bold"
-                                            HorizontalOptions="Start" />
-                                        <Label
-                                            Text="{Binding ChangesDisplay}"
-                                            FontSize="15"
-                                            FontAttributes="Bold"
-                                            HorizontalOptions="Start" />
-                                    </HorizontalStackLayout>
-
-                                    <HorizontalStackLayout
-                                        Grid.Column="2"
-                                        Spacing="5"
-                                        Margin="0,10,0,0"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Start">
-                                        <Label 
-                                            Text="{StaticResource bus}"
-                                            Margin="0,0,15,0"
-                                            FontFamily="FAS"
-                                            FontSize="16"
-                                            VerticalOptions="Center"
-                                            HorizontalOptions="Start"/>
-                                    </HorizontalStackLayout>
-
-                                </VerticalStackLayout>
-
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-
-                </CollectionView>
-
-
-            </ScrollView>
-        </VerticalStackLayout>
- 
+        <!-- Loading Overlay -->
         <Grid 
             BackgroundColor="#80000000"
             IsVisible="{Binding IsLoading}"
@@ -241,7 +241,5 @@
                 HeightRequest="100"
                 ZIndex="999" />
         </Grid>
-        
     </Grid>
-    
 </ContentPage>

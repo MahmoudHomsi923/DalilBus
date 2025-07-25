@@ -68,6 +68,7 @@ namespace DalilBus.MVVM.Models
         public string StopsDisplay => Stops == 0 
             ? StringHelper.GetLocalizedString("مباشر", "Direct") 
             : StringHelper.GetLocalizedString($"{Stops} تبديل/تبديلات", $"{Stops} change(s)");
-    
+
+        public string NameDisplay => StringHelper.GetLocalizedString(NameAr, NameEn);
     }
 }

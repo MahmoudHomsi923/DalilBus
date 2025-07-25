@@ -62,8 +62,8 @@
                     </Border>  
                 </Grid>
 
-                    <Grid Margin="15,-105,5,0" RowDefinitions="Auto,Auto,Auto" HorizontalOptions="End" VerticalOptions="Center">
-                        <Frame HeightRequest="50" WidthRequest="50" CornerRadius="25" BackgroundColor="Gold" 
+                    <Grid Margin="15,-100,5,0" RowDefinitions="Auto,Auto,Auto" HorizontalOptions="End" VerticalOptions="Center">
+                        <Frame HeightRequest="40" WidthRequest="40" CornerRadius="25" BackgroundColor="Gold" 
                                BorderColor="Transparent" HasShadow="False" Padding="0" Rotation="90">
                             <ImageButton x:Name="btnExchange" BackgroundColor="Transparent" Padding="10" Clicked="OnBtnExchangeClicked">
                                 <ImageButton.Source>

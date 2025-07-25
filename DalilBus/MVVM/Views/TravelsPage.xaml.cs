@@ -1,6 +1,7 @@
 ﻿using DalilBus.Config;
 using DalilBus.MVVM.Models;
 using DalilBus.MVVM.ViewModels;
+using System.ComponentModel;
 using System.Globalization;
 
 namespace DalilBus.MVVM.Views;
@@ -39,6 +40,36 @@ public partial class TravelsPage : ContentPage
 
         if (vm != null)
         {
+            vm.IsLoading = true;
+            await vm.IntializeDataAsync();
+            vm.IsLoading = false;
+        }
+    }
+
+    private async void OnDatePickerDateSelected(object sender, PropertyChangedEventArgs e)
+    {
+        if (vm != null)
+        {
+            if (e.PropertyName == nameof(DatePicker.Date))
+            {
+                var Picker = (DatePicker)sender;
+                vm.SelectedDate = Picker.Date;
+            }
+            vm.IsLoading = true;
+            await vm.IntializeDataAsync();
+            vm.IsLoading = false;
+        }
+    }
+
+    private async void OnTimePickerTimeSelected(object sender, PropertyChangedEventArgs e)
+    {
+        if (vm != null)
+        {
+            if (e.PropertyName == nameof(TimePicker.Time))
+            {
+                var Picker = (TimePicker)sender;
+                vm.SelectedTime = Picker.Time;
+            }
             vm.IsLoading = true;
             await vm.IntializeDataAsync();
             vm.IsLoading = false;
