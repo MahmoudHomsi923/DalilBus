@@ -65,11 +65,11 @@ namespace DalilBus
                 return; // Exit the method if no connection is available
             }
 
-            if (vm != null)
-            {
-                // Navigate to the TravelsPage with parameters
-                await Shell.Current.GoToAsync("TravelsPage");
-            }
+            vm.IsLoading = true;
+            await vm.LoadTravelsAsync();
+            // Navigate to the TravelsPage
+            await Shell.Current.GoToAsync("TravelsPage");
+            vm.IsLoading = false;
         }
     }
 

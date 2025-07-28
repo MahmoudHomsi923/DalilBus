@@ -1,6 +1,4 @@
-﻿using DalilBus.Config;
-using DalilBus.MVVM.Models;
-using DalilBus.MVVM.ViewModels;
+﻿using DalilBus.MVVM.ViewModels;
 using System.ComponentModel;
 using System.Globalization;
 
@@ -20,60 +18,49 @@ public partial class TravelsPage : ContentPage
         BindingContext = vm;  
     }
 
-    protected override async void OnAppearing()
+    protected override void OnAppearing()
     {
         base.OnAppearing();
 
         lblDirection.Text = CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "ar" ? (string)Resources["leftlong"] : (string)Resources["rightlong"];
 
-        await Task.Delay(500);
-
-        while (!ConnectivityHelper.IsConnectedToInternet())
-        {
-            await DisplayAlert(
-        "لا يوجد اتصال بالإنترنت",
-        "يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى.\nPlease check your internet connection and try again.",
-        "موافق / OK");
-
-            await Task.Delay(1000);
-        }
-
-        if (vm != null)
-        {
-            vm.IsLoading = true;
-            await vm.IntializeDataAsync();
-            vm.IsLoading = false;
-        }
+        vm.IsLoading = true;
+        vm.IntializeTravelsList();
+        vm.IsLoading = false;
     }
 
     private async void OnDatePickerDateSelected(object sender, PropertyChangedEventArgs e)
     {
-        if (vm != null)
+        if (e.PropertyName == nameof(DatePicker.Date))
         {
-            if (e.PropertyName == nameof(DatePicker.Date))
+            var picker = (DatePicker)sender;
+
+            if ( vm.SelectedDate != picker.Date)
             {
-                var Picker = (DatePicker)sender;
-                vm.SelectedDate = Picker.Date;
+                vm.SelectedDate = picker.Date;
+                vm.IsLoading = true;
+                await vm.LoadTravelsAsync();
+                vm.IntializeTravelsList();
+                vm.IsLoading = false;
             }
-            vm.IsLoading = true;
-            await vm.IntializeDataAsync();
-            vm.IsLoading = false;
-        }
+        }        
     }
 
     private async void OnTimePickerTimeSelected(object sender, PropertyChangedEventArgs e)
     {
-        if (vm != null)
+        if (e.PropertyName == nameof(TimePicker.Time))
         {
-            if (e.PropertyName == nameof(TimePicker.Time))
+            var picker = (TimePicker)sender;
+
+            if (vm.SelectedTime != picker.Time)
             {
-                var Picker = (TimePicker)sender;
-                vm.SelectedTime = Picker.Time;
+                vm.SelectedTime = picker.Time;
+                vm.IsLoading = true;
+                await vm.LoadTravelsAsync();
+                vm.IntializeTravelsList();
+                vm.IsLoading = false;
             }
-            vm.IsLoading = true;
-            await vm.IntializeDataAsync();
-            vm.IsLoading = false;
-        }
+        }  
     }
 
 }

@@ -60,9 +60,13 @@ namespace DalilBus.MVVM.ViewModels
             }
         }
 
-        public async Task IntializeDataAsync()
+        public async Task LoadTravelsAsync()
         {
             await _sharedDataService.LoadTravelsAsync();
+        }
+
+        public void IntializeTravelsList()
+        {
             TravelsList = new ObservableCollection<Travel>(_sharedDataService.TravelsList);
         }
 

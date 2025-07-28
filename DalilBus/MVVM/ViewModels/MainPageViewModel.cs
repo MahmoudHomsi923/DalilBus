@@ -109,6 +109,11 @@ namespace DalilBus.MVVM.ViewModels
             }   
         }
 
+        public async Task LoadTravelsAsync()
+        {
+            await _sharedDataService.LoadTravelsAsync();
+        }
+
         public void SwapPoints()
         {
             var temp = SelectedStartPlace;
