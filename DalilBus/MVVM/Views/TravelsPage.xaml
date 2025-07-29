@@ -117,10 +117,12 @@
         <CollectionView
             Grid.Row="2"
             ItemsSource="{Binding TravelsList}"
+            SelectedItem="{Binding SelectedTravel, Mode=TwoWay}"
             Margin="0,5,0,5"
-            SelectionMode="None"
+            SelectionMode="Single"
+            SelectionChanged="OnTravelSelectedChangedAsync"
             HorizontalOptions="Center"
-            VerticalOptions="FillAndExpand">
+            VerticalOptions="Fill">
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -128,7 +130,9 @@
                         Margin="5"
                         Padding="5"
                         CornerRadius="5"
-                        HorizontalOptions="Fill">
+                        HorizontalOptions="Fill"
+                        BackgroundColor="Transparent"
+                        IsClippedToBounds="True">
 
                         <VerticalStackLayout>
                             <HorizontalStackLayout
@@ -223,7 +227,7 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <!-- Loading Overlay -->
+         Loading Overlay 
         <Grid 
             BackgroundColor="#80000000"
             IsVisible="{Binding IsLoading}"

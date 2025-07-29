@@ -13,8 +13,7 @@ namespace DalilBus.MVVM.ViewModels
         private readonly SharedDataService _sharedDataService;
 
         private ObservableCollection<Place>? _PlacesList;
-
-
+      
         private bool isLoading = false;
 
         public bool IsLoading

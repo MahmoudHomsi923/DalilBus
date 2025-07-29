@@ -16,6 +16,18 @@ namespace DalilBus.MVVM.ViewModels
 
         private ObservableCollection<Travel>? travelsList;
 
+        private Travel? _selectedTravel;
+
+        public Travel? SelectedTravel
+        {
+            get => _selectedTravel;
+            set
+            {
+                _selectedTravel = value;
+                OnPropertyChanged();
+            }
+        }
+
         public bool IsLoading
         {
             get => isLoading;

@@ -1,4 +1,5 @@
-﻿using DalilBus.MVVM.ViewModels;
+﻿using DalilBus.MVVM.Models;
+using DalilBus.MVVM.ViewModels;
 using System.ComponentModel;
 using System.Globalization;
 
@@ -7,6 +8,10 @@ namespace DalilBus.MVVM.Views;
 public partial class TravelsPage : ContentPage
 {
     private readonly TravelsPageViewModel vm;
+
+    private bool datePickerInitialized = false;
+
+    private bool timePickerInitialized = false;
 
     public TravelsPage(TravelsPageViewModel travelsPageViewModel)
     {
@@ -33,34 +38,52 @@ public partial class TravelsPage : ContentPage
     {
         if (e.PropertyName == nameof(DatePicker.Date))
         {
-            var picker = (DatePicker)sender;
-
-            if ( vm.SelectedDate != picker.Date)
+            if (!datePickerInitialized)
             {
-                vm.SelectedDate = picker.Date;
-                vm.IsLoading = true;
-                await vm.LoadTravelsAsync();
-                vm.IntializeTravelsList();
-                vm.IsLoading = false;
+                datePickerInitialized = true;
+                return;
             }
-        }        
+
+            var picker = (DatePicker)sender;
+            vm.SelectedDate = picker.Date;
+            vm.IsLoading = true;
+            await vm.LoadTravelsAsync();
+            vm.IntializeTravelsList();
+            vm.IsLoading = false;
+        }
     }
 
     private async void OnTimePickerTimeSelected(object sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName == nameof(TimePicker.Time))
         {
-            var picker = (TimePicker)sender;
-
-            if (vm.SelectedTime != picker.Time)
+            if (!timePickerInitialized)
             {
-                vm.SelectedTime = picker.Time;
-                vm.IsLoading = true;
-                await vm.LoadTravelsAsync();
-                vm.IntializeTravelsList();
-                vm.IsLoading = false;
+                timePickerInitialized = true;
+                return;
             }
-        }  
+
+            var picker = (TimePicker)sender;
+            vm.SelectedTime = picker.Time;
+            vm.IsLoading = true;
+            await vm.LoadTravelsAsync();
+            vm.IntializeTravelsList();
+            vm.IsLoading = false;
+        }
+    }
+
+    private async void OnTravelSelectedChangedAsync(object sender, SelectionChangedEventArgs e)
+    {
+        //if (e.CurrentSelection != null && e.CurrentSelection.Count > 0)
+        //{
+        //    var selectedTravel = e.CurrentSelection[0] as Travel;
+        //    if (selectedTravel != null)
+        //    {
+        //        await Shell.Current.GoToAsync("TravelDetails");
+        //    }
+        //}
+        await DisplayAlert("Test", "test", "Ok");
+        ((CollectionView)sender).SelectedItem = null;
     }
 
 }
