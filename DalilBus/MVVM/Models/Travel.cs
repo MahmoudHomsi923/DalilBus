@@ -39,6 +39,12 @@ namespace DalilBus.MVVM.Models
         [JsonPropertyName("arrivalTime")]
         public TimeSpan ArrivalTime { get; set; }
 
+        [JsonPropertyName("durationAr")]
+        public string DurationAr { get; set; }
+
+        [JsonPropertyName("durationEn")]
+        public string DurationEn { get; set; }
+
         [JsonPropertyName("stops")]
         public int Stops { get; set; }
 
@@ -51,19 +57,7 @@ namespace DalilBus.MVVM.Models
             ? $"+{(ArrivalDate.Date - DepatureDate.Date).TotalDays:0}" + StringHelper.GetLocalizedString("يوم", "day")
             : string.Empty;
 
-
-        public string DurationDisplay
-        {
-            get
-            {
-                var duration = ArrivalTime - DepatureTime;
-                if (duration < TimeSpan.Zero)
-                    duration += TimeSpan.FromDays(1); // falls Ankunft am nächsten Tag
-
-                // Format: 4:45 hrs
-                return $"{(int)duration.TotalHours}:{duration.Minutes:D2} " + StringHelper.GetLocalizedString("س", "hrs");
-            }
-        }
+        public string DurationDisplay => StringHelper.GetLocalizedString(DurationAr, DurationEn);
 
         public string StopsDisplay => Stops == 0 
             ? StringHelper.GetLocalizedString("مباشر", "Direct") 

@@ -13,6 +13,8 @@ public partial class TravelsPage : ContentPage
 
     private bool timePickerInitialized = false;
 
+    private bool hasDataLoaded = false;
+
     public TravelsPage(TravelsPageViewModel travelsPageViewModel)
     {
         InitializeComponent();
@@ -25,10 +27,14 @@ public partial class TravelsPage : ContentPage
 
     protected override void OnAppearing()
     {
+        if (hasDataLoaded)
+        {
+            hasDataLoaded = false;
+            return;
+        }
+
         base.OnAppearing();
-
         lblDirection.Text = CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "ar" ? (string)Resources["leftlong"] : (string)Resources["rightlong"];
-
         vm.IsLoading = true;
         vm.IntializeTravelsList();
         vm.IsLoading = false;
@@ -74,16 +80,16 @@ public partial class TravelsPage : ContentPage
 
     private async void OnTravelSelectedChangedAsync(object sender, SelectionChangedEventArgs e)
     {
-        //if (e.CurrentSelection != null && e.CurrentSelection.Count > 0)
-        //{
-        //    var selectedTravel = e.CurrentSelection[0] as Travel;
-        //    if (selectedTravel != null)
-        //    {
-        //        await Shell.Current.GoToAsync("TravelDetails");
-        //    }
-        //}
-        await DisplayAlert("Test", "test", "Ok");
+        if (e.CurrentSelection != null && e.CurrentSelection.Count > 0)
+        {
+            var selectedTravel = e.CurrentSelection[0] as Travel;
+            if (selectedTravel != null)
+            {
+                await Shell.Current.GoToAsync("TravelDetailsPage");
+            }
+        }
         ((CollectionView)sender).SelectedItem = null;
+        hasDataLoaded = true;
     }
 
 }

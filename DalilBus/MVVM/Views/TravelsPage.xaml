@@ -113,7 +113,7 @@
             </HorizontalStackLayout>
         </Grid>
 
-        <!-- CollectionView: Scrollbar funktioniert jetzt -->
+        <!-- CollectionView -->
         <CollectionView
             Grid.Row="2"
             ItemsSource="{Binding TravelsList}"
@@ -126,13 +126,25 @@
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame
+                    <Border 
                         Margin="5"
                         Padding="5"
-                        CornerRadius="5"
-                        HorizontalOptions="Fill"
+                        Stroke="LightGray"
+                        StrokeThickness="1"
                         BackgroundColor="Transparent"
-                        IsClippedToBounds="True">
+                        HorizontalOptions="Fill"
+                        StrokeShape="RoundRectangle 5">
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
 
                         <VerticalStackLayout>
                             <HorizontalStackLayout
@@ -222,12 +234,12 @@
                                     HorizontalOptions="Start" />
                             </HorizontalStackLayout>
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-         Loading Overlay 
+         <!--Loading Overlay--> 
         <Grid 
             BackgroundColor="#80000000"
             IsVisible="{Binding IsLoading}"

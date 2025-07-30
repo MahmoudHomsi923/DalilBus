@@ -11,6 +11,8 @@ namespace DalilBus
             this.Navigated += OnNavigated;
             // Route für TravelsPage registrieren
             Routing.RegisterRoute("TravelsPage", typeof(TravelsPage));
+            // Route für TravelDetailsPage registrieren
+            Routing.RegisterRoute("TravelDetailsPage", typeof(TravelDetailsPage));
         }
 
         private void OnNavigated(object sender, ShellNavigatedEventArgs e)
