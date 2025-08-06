@@ -19,6 +19,7 @@ namespace DalilBus.Services
         private Place? _selectedDestinationPlace;
         private DateTime selectedDate;
         private TimeSpan selectedTime;
+        private Travel? _selectedTravel;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -88,6 +89,16 @@ namespace DalilBus.Services
             set
             {
                 selectedTime = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Travel? SelectedTravel
+        {
+            get => _selectedTravel;
+            set
+            {
+                _selectedTravel = value;
                 OnPropertyChanged();
             }
         }

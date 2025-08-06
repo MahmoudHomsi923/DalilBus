@@ -46,6 +46,7 @@ public static class MauiProgram
         // ViewModels register
         builder.Services.AddTransient<MainPageViewModel>();
 		builder.Services.AddTransient<TravelsPageViewModel>();
+        builder.Services.AddTransient<TravelDetailsPageViewModel>();
         // ApiClient register
         builder.Services.AddHttpClient<ApiClient>();
         // Services register

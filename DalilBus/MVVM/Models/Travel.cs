@@ -29,8 +29,24 @@ namespace DalilBus.MVVM.Models
         public int StartPlaceID { get; set; }
 
 
+        [JsonPropertyName("startPlaceNameAr")]
+        public string StartPlaceNameAr { get; set; }
+
+
+        [JsonPropertyName("startPlaceNameEn")]
+        public string startPlaceNameEn { get; set; }
+
+
         [JsonPropertyName("destinationPlaceID")]
         public int DestinationPlaceID { get; set; }
+
+
+        [JsonPropertyName("destinationPlaceNameAr")]
+        public string DestinationPlaceNameAr { get; set; }
+
+
+        [JsonPropertyName("destinationPlaceNameEn")]
+        public string DestinationPlaceNameEn { get; set; }
 
 
         [JsonPropertyName("depatureDate")]
@@ -106,6 +122,8 @@ namespace DalilBus.MVVM.Models
         [JsonPropertyName("stopDuration3")]
         public int? StopDuration3 { get; set; }
 
+        public string DepatureDateDisplay => DepatureDate.ToString("dd/MM/yyyy");
+
         public string DepatureTimeDisplay => DateTime.Today.Add(DepatureTime).ToString("h:mm tt");
 
         public string ArrivalTimeDisplay => DateTime.Today.Add(ArrivalTime).ToString("h:mm tt");
@@ -122,6 +140,10 @@ namespace DalilBus.MVVM.Models
             : StringHelper.GetLocalizedString($"{Changes} تبديل/تبديلات", $"{Changes} change(s)");
 
         public string NameDisplay => StringHelper.GetLocalizedString(NameAr, NameEn);
+
+        public string StartPlaceDisplay => StringHelper.GetLocalizedString(StartPlaceNameAr, startPlaceNameEn);
+
+        public string DestinationPlaceDisplay => StringHelper.GetLocalizedString(DestinationPlaceNameAr, DestinationPlaceNameEn);
 
         public string StopDuration1Display => StopDuration1.HasValue ? $"{StopDuration1} {StringHelper.GetLocalizedString("دقيقة", "minutes")}" : string.Empty;
 

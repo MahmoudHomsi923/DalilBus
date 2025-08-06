@@ -16,14 +16,12 @@ namespace DalilBus.MVVM.ViewModels
 
         private ObservableCollection<Travel>? travelsList;
 
-        private Travel? _selectedTravel;
-
         public Travel? SelectedTravel
         {
-            get => _selectedTravel;
+            get => _sharedDataService.SelectedTravel;
             set
             {
-                _selectedTravel = value;
+                _sharedDataService.SelectedTravel = value;
                 OnPropertyChanged();
             }
         }
