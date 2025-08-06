@@ -208,7 +208,7 @@
                                     FontAttributes="Bold"
                                     HorizontalOptions="Start" />
                                 <Label
-                                    Text="{Binding StopsDisplay}"
+                                    Text="{Binding ChangesDisplay}"
                                     FontSize="15"
                                     FontAttributes="Bold"
                                     HorizontalOptions="Start" />
