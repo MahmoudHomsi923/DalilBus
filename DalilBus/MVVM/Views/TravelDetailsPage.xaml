@@ -7,6 +7,8 @@
     <ContentPage.Resources>
         <x:String x:Key="calender">&#xf073;</x:String>
         <x:String x:Key="hourglass">&#xf251;</x:String>
+        <x:String x:Key="startlocation">&#xf601;</x:String>
+        <x:String x:Key="destinationlocation">&#xf3c5;</x:String>
     </ContentPage.Resources>
 
     <ScrollView>
@@ -14,78 +16,47 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-        <Grid 
-            Grid.Row="0"
-            ColumnDefinitions="*,Auto,*"
-            HeightRequest="40">
-            <HorizontalStackLayout 
-                Grid.Column="0" 
-                Spacing="5" 
-                HorizontalOptions="Center" 
-                VerticalOptions="Center">
-                <Label 
-                    Text="{StaticResource calender}"
-                    FontFamily="FAS"
-                    FontSize="16"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"/>
-                <Label
-                    x:Name="lblSelectedTravelDepatureDate"
-                    Text="{Binding SelectedTravel.DepatureDateDisplay}"
-                    FontSize="16"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"/>
-            </HorizontalStackLayout>
-            
-            <HorizontalStackLayout 
-                Grid.Column="2" 
-                Spacing="5" 
-                HorizontalOptions="Center" 
-                VerticalOptions="Center">
-                <Label 
-                    Text="{StaticResource hourglass}"
-                    FontFamily="FAS"
-                    FontSize="16"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"/>
-                    <Label
-                    x:Name="lblSelectedTravelDuration"
-                    Text="{Binding SelectedTravel.DurationDisplay}"
-                    FontSize="16"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"/>
-            </HorizontalStackLayout>
-        </Grid>
-
-        <Grid 
-            Grid.Row="1"
-            ColumnDefinitions="*,Auto,*"
-            HeightRequest="40">
-                <HorizontalStackLayout 
-                Grid.Column="0" 
-                Spacing="5" 
-                HorizontalOptions="Center" 
-                VerticalOptions="Center">
-                    <Label 
-                    Text="{StaticResource calender}"
-                    FontFamily="FAS"
-                    FontSize="25"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"/>
-                    <Label
-                    x:Name="lblSelectedTravelStartPlace"
-                    Text="{Binding SelectedTravel.StartPlaceDisplay}"
-                    FontSize="30"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"/>
+            <!-- Row 0: Date & Duration -->
+            <Grid Grid.Row="0" ColumnDefinitions="*,Auto,*" HeightRequest="40">
+                <HorizontalStackLayout Grid.Column="0" Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label Text="{StaticResource calender}" FontFamily="FAS" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label x:Name="lblSelectedTravelDepatureDate" Text="{Binding SelectedTravel.DepatureDateDisplay}" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
                 </HorizontalStackLayout>
 
+                <HorizontalStackLayout Grid.Column="2" Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label Text="{StaticResource hourglass}" FontFamily="FAS" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label x:Name="lblSelectedTravelDuration" Text="{Binding SelectedTravel.DurationDisplay}" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
+                </HorizontalStackLayout>
+
+                <BoxView Grid.Row="1" Grid.ColumnSpan="3" HeightRequest="2" Margin="10,35,10,0"/>
             </Grid>
 
+            <!-- Row 1: Start Place & Depature Time -->
+            <Grid Grid.Row="1" ColumnDefinitions="*,Auto,*" HeightRequest="40" Margin="0,20,0,0" Padding="20,0">
+                <HorizontalStackLayout Grid.Column="0" Spacing="10" HorizontalOptions="Start" VerticalOptions="Center">
+                    <Label Text="{StaticResource startlocation}" FontFamily="FAS" FontSize="20" VerticalOptions="Center"/>
+                    <Label x:Name="lblSelectedTravelStartPlace" Text="{Binding SelectedTravel.StartPlaceDisplay}" FontSize="30" VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+                <Label x:Name="lblSelectedTraveldepatureTime" Grid.Column="2" Text="{Binding SelectedTravel.DepatureTimeDisplay}" FontSize="20" VerticalOptions="Center" HorizontalOptions="End"/>
+            </Grid>
+
+            <!-- Row 2: Vertical Line (Divider) -->
+            <Grid Grid.Row="2" ColumnDefinitions="*,Auto,*" Margin="7,0,0,0" Padding="20,0">
+                <BoxView Grid.Column="0" WidthRequest="4" HeightRequest="{Binding HeightRequest}" Color="Gray" HorizontalOptions="Start" VerticalOptions="Start"/>
+            </Grid>
+
+            <!-- Row 3: Destination Place & Arrival Time -->
+            <Grid Grid.Row="3" ColumnDefinitions="*,Auto,*" HeightRequest="40" Margin="0,0,0,0" Padding="20,0">
+                <HorizontalStackLayout Grid.Column="0" Spacing="10" HorizontalOptions="Start" VerticalOptions="Center">
+                    <Label Text="{StaticResource destinationlocation}" FontFamily="FAS" FontSize="20" VerticalOptions="Center"/>
+                    <Label x:Name="lblSelectedTravelDestinationPlace" Text="{Binding SelectedTravel.DestinationPlaceDisplay}" FontSize="30" VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+                <Label x:Name="lblSelectedTravelDestinationdepatureTime" Grid.Column="2" Text="{Binding SelectedTravel.ArrivalTimeDisplay}" FontSize="20" VerticalOptions="Center" HorizontalOptions="End"/>
+            </Grid>
         </Grid>
-        
     </ScrollView>
 </ContentPage>

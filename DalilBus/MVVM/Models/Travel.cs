@@ -122,7 +122,7 @@ namespace DalilBus.MVVM.Models
         [JsonPropertyName("stopDuration3")]
         public int? StopDuration3 { get; set; }
 
-        public string DepatureDateDisplay => DepatureDate.ToString("dd/MM/yyyy");
+        public string DepatureDateDisplay => DepatureDate.ToString("dddd dd/MM/yyyy");
 
         public string DepatureTimeDisplay => DateTime.Today.Add(DepatureTime).ToString("h:mm tt");
 

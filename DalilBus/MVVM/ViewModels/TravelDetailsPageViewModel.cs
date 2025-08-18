@@ -19,6 +19,14 @@ namespace DalilBus.MVVM.ViewModels
 
         private bool isLoading = false;
 
+        private int heightRequest = 200;
+
+        public bool HasStopPlace1 => string.IsNullOrEmpty(SelectedTravel?.StopPlaceNameEn1) ? false : true;
+
+        public bool HasStopPlace2 => string.IsNullOrEmpty(SelectedTravel?.StopPlaceNameEn2) ? false : true;
+
+        public bool HasStopPlace3 => string.IsNullOrEmpty(SelectedTravel?.StopPlaceNameEn3) ? false : true;
+
         public Travel? SelectedTravel
         {
             get => _sharedDataService.SelectedTravel;
@@ -37,6 +45,8 @@ namespace DalilBus.MVVM.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public int HeightRequest => SelectedTravel == null ? heightRequest : heightRequest + (SelectedTravel.Changes * 50);
 
         public TravelDetailsPageViewModel(SharedDataService sharedDataService)
         {
