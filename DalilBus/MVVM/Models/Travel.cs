@@ -133,6 +133,12 @@ namespace DalilBus.MVVM.Models
             ? $"+{(ArrivalDate.Date - DepatureDate.Date).TotalDays:0}" + StringHelper.GetLocalizedString("يوم", "day")
             : string.Empty;
 
+        public string StopPlaceName1 => StringHelper.GetLocalizedString(StopPlaceNameAr1, StopPlaceNameEn1);
+
+        public string StopPlaceName2 => StringHelper.GetLocalizedString(StopPlaceNameAr2, StopPlaceNameEn2);
+
+        public string StopPlaceName3 => StringHelper.GetLocalizedString(StopPlaceNameAr3, StopPlaceNameEn3);
+
         public string DurationDisplay => StringHelper.GetLocalizedString(DurationAr, DurationEn);
 
         public string ChangesDisplay => Changes == 0 

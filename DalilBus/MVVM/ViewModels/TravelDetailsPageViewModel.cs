@@ -21,11 +21,11 @@ namespace DalilBus.MVVM.ViewModels
 
         private int heightRequest = 200;
 
-        public bool HasStopPlace1 => string.IsNullOrEmpty(SelectedTravel?.StopPlaceNameEn1) ? false : true;
+        public bool HasStopPlace1 => !string.IsNullOrEmpty(SelectedTravel?.StopPlaceNameEn1);
 
-        public bool HasStopPlace2 => string.IsNullOrEmpty(SelectedTravel?.StopPlaceNameEn2) ? false : true;
+        public bool HasStopPlace2 => !string.IsNullOrEmpty(SelectedTravel?.StopPlaceNameEn2);
 
-        public bool HasStopPlace3 => string.IsNullOrEmpty(SelectedTravel?.StopPlaceNameEn3) ? false : true;
+        public bool HasStopPlace3 => !string.IsNullOrEmpty(SelectedTravel?.StopPlaceNameEn3);
 
         public Travel? SelectedTravel
         {
@@ -43,6 +43,20 @@ namespace DalilBus.MVVM.ViewModels
             {
                 isLoading = value;
                 OnPropertyChanged();
+            }
+        }
+
+        public double TotalStopPlacesHeight
+        {
+            get
+            {
+                int visibleCount = 0;
+                if (HasStopPlace1) visibleCount++;
+                if (HasStopPlace2) visibleCount++;
+                if (HasStopPlace3) visibleCount++;
+
+                // 40px pro Haltestelle + 20px Abstand dazwischen
+                return (visibleCount * 40) + ((visibleCount > 0 ? visibleCount - 1 : 0) * 20);
             }
         }
 

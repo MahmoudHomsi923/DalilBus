@@ -9,6 +9,24 @@
         <x:String x:Key="hourglass">&#xf251;</x:String>
         <x:String x:Key="startlocation">&#xf601;</x:String>
         <x:String x:Key="destinationlocation">&#xf3c5;</x:String>
+
+        <!-- Style für Haltestellen-Labels -->
+        <Style x:Key="StopPlaceLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="Start" />
+        </Style>
+
+        <!-- Style für Minuszeichen -->
+        <Style x:Key="MinusSignStyle" TargetType="Label">
+            <Setter Property="Text" Value="-" />
+            <Setter Property="FontSize" Value="35" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="Gray" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+        </Style>
     </ContentPage.Resources>
 
     <ScrollView>
@@ -36,26 +54,101 @@
             </Grid>
 
             <!-- Row 1: Start Place & Depature Time -->
-            <Grid Grid.Row="1" ColumnDefinitions="*,Auto,*" HeightRequest="40" Margin="0,20,0,0" Padding="20,0">
-                <HorizontalStackLayout Grid.Column="0" Spacing="10" HorizontalOptions="Start" VerticalOptions="Center">
-                    <Label Text="{StaticResource startlocation}" FontFamily="FAS" FontSize="20" VerticalOptions="Center"/>
-                    <Label x:Name="lblSelectedTravelStartPlace" Text="{Binding SelectedTravel.StartPlaceDisplay}" FontSize="30" VerticalOptions="Center"/>
-                </HorizontalStackLayout>
-                <Label x:Name="lblSelectedTraveldepatureTime" Grid.Column="2" Text="{Binding SelectedTravel.DepatureTimeDisplay}" FontSize="20" VerticalOptions="Center" HorizontalOptions="End"/>
+            <Grid Grid.Row="1" ColumnDefinitions="Auto, *, Auto" HeightRequest="40" Margin="0,20,0,10" Padding="20,0">
+                <Label Grid.Column="0" Text="{StaticResource startlocation}" FontFamily="FAS" FontSize="15" VerticalOptions="Center" HorizontalOptions="Start"/>
+
+                <Label Grid.Column="1" x:Name="lblSelectedTravelStartPlace" Text="{Binding SelectedTravel.StartPlaceDisplay}" 
+                       FontSize="25" VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0,0,0"/>
+
+                <Label Grid.Column="2" x:Name="lblSelectedTraveldepatureTime" Text="{Binding SelectedTravel.DepatureTimeDisplay}" 
+                       FontSize="20" VerticalOptions="Center" HorizontalOptions="End"/>
             </Grid>
 
-            <!-- Row 2: Vertical Line (Divider) -->
-            <Grid Grid.Row="2" ColumnDefinitions="*,Auto,*" Margin="7,0,0,0" Padding="20,0">
-                <BoxView Grid.Column="0" WidthRequest="4" HeightRequest="{Binding HeightRequest}" Color="Gray" HorizontalOptions="Start" VerticalOptions="Start"/>
+            <!-- Row 2: Vertical Line with Stop Places -->
+            <Grid Grid.Row="2" ColumnDefinitions="Auto, *" Margin="-10,0,0,0" Padding="35,0,0,0">
+                <!-- Vertikale Linie, die von Start- bis Zielort reicht -->
+                <BoxView Grid.Column="0" 
+                         WidthRequest="4" 
+                         Color="Gray" 
+                         HorizontalOptions="Center" 
+                         VerticalOptions="Fill"
+                         Margin="0,-20,0,-20"/>
+
+                <!-- Container für alle Haltestellen -->
+                <StackLayout Grid.Column="1" 
+                             Spacing="25" 
+                             VerticalOptions="Center"
+                             HorizontalOptions="Start"
+                             Margin="0,40,0,50">
+
+                    <!-- Haltestelle 1 -->
+                    <Grid IsVisible="{Binding HasStopPlace1}" 
+                          HeightRequest="40">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" 
+                               Style="{StaticResource MinusSignStyle}" 
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"/>
+
+                        <Label Grid.Column="1" 
+                               Margin="15,0,0,0"
+                               Style="{StaticResource StopPlaceLabelStyle}" 
+                               Text="{Binding SelectedTravel.StopPlaceName1}"/>
+                    </Grid>
+
+                    <!-- Haltestelle 2 -->
+                    <Grid IsVisible="{Binding HasStopPlace2}" 
+                          HeightRequest="40">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" 
+                               Style="{StaticResource MinusSignStyle}" 
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"/>
+
+                        <Label Grid.Column="1" 
+                               Margin="15,0,0,0"
+                               Style="{StaticResource StopPlaceLabelStyle}" 
+                               Text="{Binding SelectedTravel.StopPlaceName2}"/>
+                    </Grid>
+
+                    <!-- Haltestelle 3 -->
+                    <Grid IsVisible="{Binding HasStopPlace3}" 
+                          HeightRequest="40">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" 
+                               Style="{StaticResource MinusSignStyle}" 
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"/>
+
+                        <Label Grid.Column="1" 
+                               Margin="15,0,0,0"
+                               Style="{StaticResource StopPlaceLabelStyle}" 
+                               Text="{Binding SelectedTravel.StopPlaceName3}"/>
+                    </Grid>
+                </StackLayout>
             </Grid>
 
             <!-- Row 3: Destination Place & Arrival Time -->
-            <Grid Grid.Row="3" ColumnDefinitions="*,Auto,*" HeightRequest="40" Margin="0,0,0,0" Padding="20,0">
-                <HorizontalStackLayout Grid.Column="0" Spacing="10" HorizontalOptions="Start" VerticalOptions="Center">
-                    <Label Text="{StaticResource destinationlocation}" FontFamily="FAS" FontSize="20" VerticalOptions="Center"/>
-                    <Label x:Name="lblSelectedTravelDestinationPlace" Text="{Binding SelectedTravel.DestinationPlaceDisplay}" FontSize="30" VerticalOptions="Center"/>
-                </HorizontalStackLayout>
-                <Label x:Name="lblSelectedTravelDestinationdepatureTime" Grid.Column="2" Text="{Binding SelectedTravel.ArrivalTimeDisplay}" FontSize="20" VerticalOptions="Center" HorizontalOptions="End"/>
+            <Grid Grid.Row="3" ColumnDefinitions="Auto, *, Auto" HeightRequest="40" Margin="0,10,0,20" Padding="20,0">
+                <Label Grid.Column="0" Text="{StaticResource destinationlocation}" FontFamily="FAS" FontSize="15" VerticalOptions="Center" HorizontalOptions="Start"/>
+
+                <Label Grid.Column="1" x:Name="lblSelectedTravelDestinationPlace" Text="{Binding SelectedTravel.DestinationPlaceDisplay}" 
+                       FontSize="25" VerticalOptions="Center" HorizontalOptions="Start" Margin="10,0,0,0"/>
+
+                <Label Grid.Column="2" x:Name="lblSelectedTravelDestinationdepatureTime" Text="{Binding SelectedTravel.ArrivalTimeDisplay}" 
+                       FontSize="20" VerticalOptions="Center" HorizontalOptions="End"/>
             </Grid>
         </Grid>
     </ScrollView>
