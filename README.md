@@ -1,5 +1,7 @@
 🚍 DalilBuses
 
+https://github.com/user-attachments/assets/4042ebf1-09ab-4b93-9915-38362c8913c0
+
 مرحبًا، أودّ أن أقدّم لكم تطبيقي الذي يحمل اسم “DalilBuses”.
 
 يُعد هذا التطبيق تطبيقًا مخصصًا لقطاع المواصلات داخل سوريا، إلا أنّه يختص حصريًا بالمواصلات بين المحافظات، ولا يشمل النقل ضمن المحافظة الواحدة.
@@ -43,6 +45,7 @@
 * التعامل مع قواعد البيانات السحابية
 * بناء هوية بصرية لتطبيق رقمي
 * إدارة وتنفيذ مشروع برمجي متكامل بشكل مستقل
+
   
 شكرًا لحسن المتابعة.
 
@@ -53,58 +56,55 @@
 
 
 
-ich möchte euch meine App „Dalil Bus 🚍“ vorstellen.
-Diese App ist speziell für den Transportsektor in Syrien entwickelt worden,
-sie konzentriert sich ausschließlich auf den Personenverkehr zwischen den Provinzen
-und umfasst keinen innerstädtischen Verkehr.
-Idee der App
-Die Idee der App besteht darin, klare und aktuelle Informationen
-über Fahrten zwischen den syrischen Provinzen bereitzustellen.
-Die App ist vollständig kostenlos
-und kann ohne Registrierung oder Abonnement genutzt werden.
-Transportunternehmen senden mir ihre Fahrpläne in Form von Excel-Dateien,
-die ich monatlich in die Datenbank der App einpflege und aktualisiere.
-Die App ermöglicht es den Nutzern:
-verfügbare Fahrten zwischen den Provinzen einzusehen
-Routen und Streckenverläufe zu prüfen
-Abfahrtszeiten anzuzeigen
-verfügbare Transportunternehmen kennenzulernen
-Verwendete Technologien und Tools
-Die App wurde mit folgenden Technologien und Tools entwickelt:
-Programmiersprache C# und Framework .NET MAUI
-Erstellung der visuellen Identität der App, einschließlich:
-Logo
-Bilder
-grafische Elemente
-mithilfe des Tools Canva
-Nutzung der cloudbasierten Datenbank Supabase
-Einsatz einer modernen Cloud-Architektur zur Datenverwaltung
-Die App enthält keine Werbung und keine kostenpflichtigen Funktionen.
-Funktionsweise
-Transportunternehmen verfügen über keine eigenen Benutzerkonten innerhalb der App.
-Sie übermitteln mir ausschließlich ihre Fahrtdaten,
-während ich selbst die Pflege und regelmäßige Aktualisierung
-der Daten in der Datenbank übernehme.
-Einzelentwicklung
-Ich möchte betonen, dass diese App:
-vollständig eigenständig entwickelt wurde
-von der Idee über die Programmierung und visuelle Gestaltung
-bis hin zur Datenbankverwaltung
-ohne Unterstützung eines Entwicklerteams
-Grund für den Entwicklungsstopp
-Die Weiterentwicklung der App wurde eingestellt,
-nachdem ein ähnliches Projekt von einem vollständigen Team
-bereits vor mir veröffentlicht wurde.
-Daher habe ich mich entschieden,
-das Projekt als Lern- und Referenzprojekt abzuschließen.
-Abschluss
-Dieses Projekt stellte für mich eine wertvolle Erfahrung dar
-und half mir, meine Fähigkeiten in folgenden Bereichen weiterzuentwickeln:
-Entwicklung mobiler Anwendungen
-Verwaltung cloudbasierter Datenbanken
-Aufbau einer visuellen Identität für digitale Produkte
-Selbstständige Umsetzung eines vollständigen Softwareprojekts
-Vielen Dank für Ihre Aufmerksamkeit.
+Hallo, ich möchte Ihnen meine Anwendung mit dem Namen „DalilBuses“ vorstellen.
 
-https://github.com/user-attachments/assets/4042ebf1-09ab-4b93-9915-38362c8913c0
+Diese Anwendung ist speziell für den Verkehrssektor in Syrien konzipiert. Sie ist jedoch ausschließlich auf den Verkehr zwischen den Provinzen ausgerichtet und umfasst keinen innerstädtischen Verkehr innerhalb einer einzelnen Provinz.
+
+Idee der Anwendung:
+Die Idee der Anwendung besteht darin, klare und aktuelle Informationen über Fahrten zwischen den syrischen Provinzen bereitzustellen.
+
+Die Anwendung ist vollständig kostenlos und steht allen Nutzern ohne Registrierung oder Abonnement zur Verfügung.
+
+Die Transportunternehmen senden mir ihre Fahrpläne in Form von Excel-Dateien, und ich lade diese Daten monatlich in die Datenbank der Anwendung hoch und aktualisiere sie regelmäßig.
+
+Die Anwendung ermöglicht es den Nutzern:
+
+* Verfügbare Fahrten zwischen den Provinzen einzusehen
+* Die jeweiligen Routen zu kennen
+* Abfahrtszeiten anzuzeigen
+* Verfügbare Transportunternehmen kennenzulernen
+
+Verwendete Werkzeuge und Technologien:
+
+* Die Anwendung wurde mit den folgenden Werkzeugen und Technologien entwickelt:
+* Programmiersprache C# und Framework .NET MAUI
+* Erstellung der visuellen Identität der Anwendung, einschließlich
+* Logo, Bilder und grafischer Elemente, mithilfe des Tools Canva
+* Nutzung der cloudbasierten Datenbank Supabase
+* Einsatz einer modernen Cloud-Infrastruktur zur Datenverwaltung
+
+Die Anwendung enthält keinerlei Zahlungssysteme oder Werbung und ist vollständig kostenlos.
+
+Funktionsweise:
+
+Die Transportunternehmen verfügen über keine eigenen Konten innerhalb der Anwendung. Ihre Aufgabe beschränkt sich ausschließlich auf die Übermittlung der Fahrtdaten, während ich persönlich die Eingabe und regelmäßige Aktualisierung der Daten in der Datenbank übernehme.
+
+Entwicklung:
+
+Die Anwendung wurde vollständig eigenständig entwickelt, beginnend mit der Idee, über die Programmierung und die Erstellung der visuellen Identität bis hin zur Verwaltung der Datenbank, ohne die Unterstützung eines Entwicklerteams.
+
+Grund für die Einstellung der Weiterentwicklung:
+
+Die Weiterentwicklung der Anwendung wurde eingestellt, nachdem eine ähnliche Anwendung von einem anderen Team bereits vor mir umgesetzt wurde. Daher entschied ich mich, die Entwicklung des Projekts zu beenden und es als Lernprojekt und persönliche Erfahrung zu betrachten, die wesentlich zur Weiterentwicklung meiner Fähigkeiten beigetragen hat.
+
+Abschluss:
+
+Dieses Projekt stellte für mich eine wichtige Erfahrung dar und half mir, meine Fähigkeiten in folgenden Bereichen weiterzuentwickeln:
+* Entwicklung mobiler Anwendungen
+* Arbeit mit cloudbasierten Datenbanken
+* Aufbau einer visuellen Identität für digitale Anwendungen
+* Selbstständige Planung und Umsetzung eines vollständigen Softwareprojekts
+
+
+Vielen Dank für Ihre Aufmerksamkeit.
 
