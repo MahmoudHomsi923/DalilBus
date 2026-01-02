@@ -75,9 +75,8 @@ Die Anwendung ermöglicht es den Nutzern:
 * Abfahrtszeiten anzuzeigen
 * Verfügbare Transportunternehmen kennenzulernen
 
-Verwendete Werkzeuge und Technologien:
+Die Anwendung wurde mit den folgenden Werkzeugen und Technologien entwickelt:
 
-* Die Anwendung wurde mit den folgenden Werkzeugen und Technologien entwickelt:
 * Programmiersprache C# und Framework .NET MAUI
 * Erstellung der visuellen Identität der Anwendung, einschließlich
 * Logo, Bilder und grafischer Elemente, mithilfe des Tools Canva
