@@ -56,6 +56,11 @@ https://github.com/user-attachments/assets/4042ebf1-09ab-4b93-9915-38362c8913c0
 
 
 
+
+
+
+
+
 Hallo, ich möchte Ihnen meine Anwendung mit dem Namen „DalilBuses“ vorstellen.
 
 Diese Anwendung ist speziell für den Verkehrssektor in Syrien konzipiert. Sie ist jedoch ausschließlich auf den Verkehr zwischen den Provinzen ausgerichtet und umfasst keinen innerstädtischen Verkehr innerhalb einer einzelnen Provinz.
