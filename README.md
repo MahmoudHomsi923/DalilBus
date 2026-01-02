@@ -61,6 +61,7 @@ Hallo, ich möchte Ihnen meine Anwendung mit dem Namen „DalilBuses“ vorstell
 Diese Anwendung ist speziell für den Verkehrssektor in Syrien konzipiert. Sie ist jedoch ausschließlich auf den Verkehr zwischen den Provinzen ausgerichtet und umfasst keinen innerstädtischen Verkehr innerhalb einer einzelnen Provinz.
 
 Idee der Anwendung:
+
 Die Idee der Anwendung besteht darin, klare und aktuelle Informationen über Fahrten zwischen den syrischen Provinzen bereitzustellen.
 
 Die Anwendung ist vollständig kostenlos und steht allen Nutzern ohne Registrierung oder Abonnement zur Verfügung.
