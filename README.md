@@ -20,7 +20,7 @@ https://github.com/user-attachments/assets/4042ebf1-09ab-4b93-9915-38362c8913c0
   
 تم تطوير التطبيق باستخدام الأدوات والتقنيات التالية:
 * لغة البرمجة C# وإطار العمل .NET MAUI
-* إعداد الهوية البصرية للتطبيق، بما يشمل الشعار (Logo)، الصور، العناصر الرسومية وذلك باستخدام أداة Canva
+* إعداد الهوية البصرية للتطبيق، بما يشمل الشعار (Logo)، الصور والعناصر الرسومية وذلك باستخدام أداة Canva
 * استخدام قاعدة البيانات السحابية Supabase
 * الاعتماد على بنية سحابية حديثة لإدارة البيانات
 
@@ -51,16 +51,6 @@ https://github.com/user-attachments/assets/4042ebf1-09ab-4b93-9915-38362c8913c0
 
 
 
-
-
-
-
-
-
-
-
-
-
 Hallo, ich möchte Ihnen meine Anwendung mit dem Namen „DalilBuses“ vorstellen.
 
 Diese Anwendung ist speziell für den Verkehrssektor in Syrien konzipiert. Sie ist jedoch ausschließlich auf den Verkehr zwischen den Provinzen ausgerichtet und umfasst keinen innerstädtischen Verkehr innerhalb einer einzelnen Provinz.
@@ -83,8 +73,7 @@ Die Anwendung ermöglicht es den Nutzern:
 Die Anwendung wurde mit den folgenden Werkzeugen und Technologien entwickelt:
 
 * Programmiersprache C# und Framework .NET MAUI
-* Erstellung der visuellen Identität der Anwendung, einschließlich
-* Logo, Bilder und grafischer Elemente, mithilfe des Tools Canva
+* Erstellung der visuellen Identität der Anwendung, einschließlich Logo, Bilder und grafischer Elemente, mithilfe des Tools Canva
 * Nutzung der cloudbasierten Datenbank Supabase
 * Einsatz einer modernen Cloud-Infrastruktur zur Datenverwaltung
 
